@@ -5,6 +5,15 @@
 html {
   scroll-behavior: smooth;
 }
+nav a {
+  color: white;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+  
+}
+
+nav a:hover {
+  color: hsl(50, 100%, 70%);
+}
 
 /* :root {
   --foreground-rgb: 0, 0, 0;

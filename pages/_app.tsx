@@ -1,11 +1,9 @@
 import "@/styles/globals.css";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 import "@/styles/nprogress.css";
-import { config } from "@fortawesome/fontawesome-svg-core";
+
 
 import NProgess from "nprogress";
 
-config.autoAddCss = false;
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 
