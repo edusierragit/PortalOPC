@@ -2,51 +2,45 @@ import { useEffect, useRef, useState } from "react";
 import Searchbar from "./Searchbar";
 
 export default function Navbar() {
-  const [collapse, setCollapse] = useState<boolean>(false);
-  const navigationRef = useRef<HTMLUListElement>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [collapse, setCollapse] = useState<boolean>(false); // Estado que controla el colapso del menú de navegación
+  const navigationRef = useRef<HTMLUListElement>(null); // Referencia al elemento de la lista de navegación
+  const [isScrolled, setIsScrolled] = useState(false); // Estado que indica si la página ha sido desplazada hacia abajo
 
   useEffect(() => {
+    // Manejador de desplazamiento de la página
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       setIsScrolled(scrollTop > 0);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll); // evento para el scroll
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll); // Remover escucha de evento de desplazamiento al desmontar el componente
     };
   }, []);
 
   useEffect(() => {
+    // Manejador de cambio de tamaño de ventana
     const handleWindowResize = () => {
-      setCollapse(false);
+      setCollapse(false); // Restablecer el estado del colapso cuando se cambia el tamaño de la ventana
     };
 
-    window.addEventListener("resize", handleWindowResize);
+    window.addEventListener("resize", handleWindowResize); // Agregar escucha de evento de cambio de tamaño de ventana
 
     return () => {
-      window.removeEventListener("resize", handleWindowResize);
+      window.removeEventListener("resize", handleWindowResize); // Remover escucha de evento de cambio de tamaño de ventana al desmontar el componente
     };
   }, []);
 
   useEffect(() => {
+    // Actualiza las clases CSS del elemento de la lista de navegación en función del estado de desplazamiento
     if (isScrolled) {
-      navigationRef.current?.classList.add("fixed", "top-0");
+      navigationRef.current?.classList.add("fixed", "top-0"); // Agregar las clases "fixed" y "top-0"
     } else {
-      navigationRef.current?.classList.remove("fixed", "top-0");
+      navigationRef.current?.classList.remove("fixed", "top-0"); // Eliminar las clases "fixed" y "top-0"
     }
   }, [isScrolled]);
-
-  const handleClickOutside = (e: MouseEvent) => {
-    if (
-      navigationRef.current &&
-      !navigationRef.current.contains(e.target as Node)
-    ) {
-      setCollapse(false);
-    }
-  };
 
   return (
     <nav
