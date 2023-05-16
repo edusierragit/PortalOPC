@@ -6,7 +6,7 @@ const Searchbar = () => {
       <span className="text-white">¿Qué estás buscando?</span>
       <input
         type="text"
-        className="ml-4 px-4 py-2 rounded-md bg-white"
+        className="ml-8 px-8 py-2 rounded-md bg-white"
         placeholder="Ingresa tu búsqueda"
       />
     </div>
