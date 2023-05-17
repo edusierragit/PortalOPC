@@ -39,9 +39,9 @@ export default function Navbar() {
   useEffect(() => {
     // Actualiza las clases CSS del elemento de la lista de navegación en función del estado de desplazamiento
     if (isScrolled) {
-      navigationRef.current?.classList.add("fixed", "top-0"); // Agregar las clases "fixed" y "top-0"
+      navigationRef.current?.classList.add("fixed", "top-0"); // Agrega las clases "fixed" y "top-0"
     } else {
-      navigationRef.current?.classList.remove("fixed", "top-0"); // Eliminar las clases "fixed" y "top-0"
+      navigationRef.current?.classList.remove("fixed", "top-0"); // Elimina las clases "fixed" y "top-0"
     }
   }, [isScrolled]);
 
@@ -58,12 +58,8 @@ export default function Navbar() {
     setShowDropdown((prevState) => !prevState);
   };
   return (
-    <nav className={`w-full p-4 bg-customTeal dark:bg-customTeal border-b border-gray-300 dark:border-gray-600 flex items-center justify-center font-sans`}>
-      <div className="flex items-center justify-between w-full md:w-[110px]" style={{
-        position: "relative",
-        transform: isScrolled ? "translateY(0)" : "translateY(-100%)",
-        transition: "transform 300ms ease-in-out",
-      }}>
+    <nav className={`w-full p-4 bg-customTeal dark:bg-customTeal border-b border-gray-300 dark:border-gray-600 flex items-center justify-center font-sans`} >
+      <div className="flex items-center justify-between w-full md:w-[110px]" >
         <button
           className="hover:ring-4 md:hidden"
           onClick={() => setCollapse(true)}
@@ -81,7 +77,7 @@ export default function Navbar() {
             onMouseEnter={handleDropdownToggle}
             onMouseLeave={handleDropdownToggle}
           >
-            <a href="#" className="text-white  py-3 md:py-1 px-3 md:px-2">
+            <a href="/" className="text-white  py-3 md:py-1 px-3 md:px-2">
               Institucional
             </a>
             {showDropdown && (
