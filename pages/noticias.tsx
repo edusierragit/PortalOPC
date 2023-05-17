@@ -5,28 +5,37 @@ import Logosprov from '@/components/Logosprov';
 
 interface Noticia {
   id: string;
-  acceso_publico_registrados_funcionarios: null | string;
-  bajada: string;
-  copete: string;
-  createdAt: string;
-  date_stop_publish: string;
-  date_to_publish: string;
-  desarrollo_nota: string;
-  descripcion_corta: string;
-  link_contenido: string;
-  publishedAt: string;
-  titulo_destaque: string;
-  updatedAt: string;
+  attributes: {
+    acceso_publico_registrados_funcionarios: null | string;
+    bajada: string;
+    copete: string;
+    createdAt: string;
+    date_stop_publish: string;
+    date_to_publish: string;
+    desarrollo_nota: string;
+    descripcion_corta: string;
+    link_contenido: string;
+    publishedAt: string;
+    titulo_destaque: string;
+    updatedAt: string;
+    imagen_principal?: {
+      data: Array<{
+        attributes: {
+          url: string;
+        };
+      }>;
+    };
+  };
 }
 
 const Noticias: React.FC = () => {
-  const [noticias, setNoticias] = useState<Noticia[]>([]);
+  const [notas, setNotas] = useState<Noticia[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get<{ data: Noticia[]; meta: any }>('http://localhost:1337/api/notas');
-        setNoticias(res.data.data);
+        const res = await axios.get<{ data: Noticia[]; meta: any }>('http://localhost:1337/api/notas?populate=*');
+        setNotas(res.data.data);
         console.log(res.data.data, 'RES DEL GET'); // for debugging purposes
       } catch (error) {
         console.error(error);
@@ -42,26 +51,31 @@ const Noticias: React.FC = () => {
       <Navbar />
 
       <div>
-        {noticias.length > 0 ? (
-          noticias.map(noticia => (
-            <div key={noticia.id}>
-              <h2>{noticia.titulo_destaque}</h2>
-              <p>{noticia.descripcion_corta}</p>
-              <p>{noticia.desarrollo_nota}</p>
-              <p>Acceso Público Registrados Funcionarios: {noticia.acceso_publico_registrados_funcionarios}</p>
-              <p>Bajada: {noticia.bajada}</p>
-              <p>Copete: {noticia.copete}</p>
-              <p>Created At: {noticia.createdAt}</p>
-              <p>Date Stop Publish: {noticia.date_stop_publish}</p>
-              <p>Date to Publish: {noticia.date_to_publish}</p>
-              <p>Link Contenido: {noticia.link_contenido}</p>
-              <p>Published At: {noticia.publishedAt}</p>
-              <p>Updated At: {noticia.updatedAt}</p>
-              {/* Render other properties of the noticia object */}
+        {notas.length > 0 ? (
+          notas.map(nota => (
+            <div key={nota.id}>
+              <h2>{nota.attributes.titulo_destaque}</h2>
+              <p>{nota.attributes.descripcion_corta}</p>
+              <p>{nota.attributes.desarrollo_nota}</p>
+              {nota.attributes.acceso_publico_registrados_funcionarios && (
+                <p>Acceso Público Registrados Funcionarios: {nota.attributes.acceso_publico_registrados_funcionarios}</p>
+              )}
+              {nota.attributes.bajada && <p>Bajada: {nota.attributes.bajada}</p>}
+              {nota.attributes.copete && <p>Copete: {nota.attributes.copete}</p>}
+              {nota.attributes.createdAt && <p>Created At: {nota.attributes.createdAt}</p>}
+              {nota.attributes.date_stop_publish && <p>Date Stop Publish: {nota.attributes.date_stop_publish}</p>}
+              {nota.attributes.date_to_publish && <p>Date to Publish: {nota.attributes.date_to_publish}</p>}
+              {nota.attributes.link_contenido && <p>Link Contenido: {nota.attributes.link_contenido}</p>}
+              {nota.attributes.publishedAt && <p>Published At: {nota.attributes.publishedAt}</p>}
+              {nota.attributes.updatedAt && <p>Updated At: {nota.attributes.updatedAt}</p>}
+              {nota.attributes.imagen_principal && nota.attributes.imagen_principal.data.length > 0 && (
+                <img src={nota.attributes.imagen_principal.data[0].attributes.url} alt="Imagen Principal" />
+              )}
+              {/* Render other properties of the nota object */}
             </div>
           ))
         ) : (
-          <p>No se pudo obtener la lista de noticias.</p>
+          <p>No se pudo obtener la lista de notas.</p>
         )}
       </div>
     </>
