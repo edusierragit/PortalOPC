@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import Searchbar from "./Searchbar";
+import Link from 'next/link';
 
 export default function Navbar() {
   const [collapse, setCollapse] = useState<boolean>(false); // Estado que controla el colapso del menú de navegación
   const navigationRef = useRef<HTMLUListElement>(null); // Referencia al elemento de la lista de navegación
   const [isScrolled, setIsScrolled] = useState(false); // Estado que indica si la página ha sido desplazada hacia abajo
-
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [showDropdown, setShowDropdown] = useState(false);
   useEffect(() => {
     // Manejador de desplazamiento de la página
     const handleScroll = () => {
@@ -42,10 +44,20 @@ export default function Navbar() {
     }
   }, [isScrolled]);
 
+  const handleOptionClick = (option: string) => {
+    setSelectedOption(option);
+
+  };
+
+  const closeModal = () => {
+    setSelectedOption(null);
+  };
+
+  const handleDropdownToggle: React.MouseEventHandler<HTMLLIElement> = () => {
+    setShowDropdown((prevState) => !prevState);
+  };
   return (
-    <nav
-      className={`w-full p-4 bg-customTeal dark:bg-customTeal border-b border-gray-300 dark:border-gray-600 flex items-center justify-center font-sans`}
-    >
+    <nav className={`w-full p-4 bg-customTeal dark:bg-customTeal border-b border-gray-300 dark:border-gray-600 flex items-center justify-center font-sans`}>
       <div className="flex items-center justify-between w-full md:w-[110px]" style={{
         position: "relative",
         transform: isScrolled ? "translateY(0)" : "translateY(-100%)",
@@ -57,31 +69,49 @@ export default function Navbar() {
         ></button>
       </div>
 
-      {/* componente de la barra buscadora */}
       <Searchbar />
+
       <ul
         ref={navigationRef}
         className={`md:flex md:items-center gap-10 bg-customTeal dark:bg-customTeal w-[60%] md:w-auto ${collapse ? "" : "hidden md:block"
           } px-4 py-3 border-r border-gray-300 md:border-0 shadow-lg md:shadow-none transition-all ease-in-out duration-500 font-sans`}
-
       >
-        {/* Close Button */}
-        <div className="flex items-center justify-end md:hidden">
-          <button
-            className="hover:ring-2 w-6 h-6 rounded-full"
-            onClick={() => setCollapse(false)}
+        <div className="relative group">
+          <li
+            className="hover:bg-customTeal  hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500 cursor-pointer"
+            onMouseEnter={handleDropdownToggle}
+            onMouseLeave={handleDropdownToggle}
           >
-            X
-          </button>
+            <a href="#" className="text-white  py-3 md:py-1 px-3 md:px-2">
+              Institucional
+            </a>
+            {showDropdown && (
+              <ul className="absolute top-full left-0 w-48 bg-gray-400 p-4">
+                <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+
+                  <a href="/autoridades" className="text-white py-3 md:py-1 px-3 md:px-2">
+                    Autoridades
+                  </a>
+
+                </li>
+                <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+
+                  <a href="/organigrama" className="text-white py-3 md:py-1 px-3 md:px-2">
+                    Organigrama
+                  </a>
+
+                </li>
+                <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+
+                  <a href="/lineas-accion" className="text-white py-3 md:py-1 px-3 md:px-2">
+                    Líneas de Acción
+                  </a>
+
+                </li>
+              </ul>
+            )}
+          </li>
         </div>
-        {/* Close Button */}
-        {/* Contenido de la Navbar */}
-        <li className="hover:bg-customTeal  hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500"
-        >
-          <a href="#" className="text-white py-3 md:py-1 px-3 md:px-2">
-            Institucional
-          </a>
-        </li>
         <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
           <a href="#" className="text-white py-3 md:py-1 px-3 md:px-2">
             Organismos
