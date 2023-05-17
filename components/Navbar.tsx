@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import Searchbar from "./Searchbar";
-import Link from 'next/link';
+
+
 
 export default function Navbar() {
   const [collapse, setCollapse] = useState<boolean>(false); // Estado que controla el colapso del menú de navegación
@@ -8,6 +8,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false); // Estado que indica si la página ha sido desplazada hacia abajo
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
+
   useEffect(() => {
     // Manejador de desplazamiento de la página
     const handleScroll = () => {
@@ -69,8 +70,6 @@ export default function Navbar() {
         ></button>
       </div>
 
-      <Searchbar />
-
       <ul
         ref={navigationRef}
         className={`md:flex md:items-center gap-10 bg-customTeal dark:bg-customTeal w-[60%] md:w-auto ${collapse ? "" : "hidden md:block"
@@ -86,7 +85,7 @@ export default function Navbar() {
               Institucional
             </a>
             {showDropdown && (
-              <ul className="absolute top-full left-0 w-48 bg-gray-400 p-4">
+              <ul className="absolute top-full left-0 w-48 bg-customTeal p-4">
                 <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
 
                   <a href="/autoridades" className="text-white py-3 md:py-1 px-3 md:px-2">
@@ -113,12 +112,12 @@ export default function Navbar() {
           </li>
         </div>
         <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
-          <a href="#" className="text-white py-3 md:py-1 px-3 md:px-2">
+          <a href="organismos" className="text-white py-3 md:py-1 px-3 md:px-2">
             Organismos
           </a>
         </li>
         <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
-          <a href="#" className="text-white py-3 md:py-1 px-3 md:px-2">
+          <a href="proveedores" className="text-white py-3 md:py-1 px-3 md:px-2">
             Proveedores
           </a>
         </li>
@@ -128,8 +127,8 @@ export default function Navbar() {
           </a>
         </li>
         <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
-          <a href="#" className="text-white py-3 md:py-1 px-3 md:px-2">
-            Capacitacion
+          <a href="capacitacion" className="text-white py-3 md:py-1 px-3 md:px-2">
+            Capacitación
           </a>
         </li>
       </ul>
