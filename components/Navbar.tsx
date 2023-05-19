@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-
-
 export default function Navbar() {
   const [collapse, setCollapse] = useState<boolean>(false); // Estado que controla el colapso del menú de navegación
   const navigationRef = useRef<HTMLUListElement>(null); // Referencia al elemento de la lista de navegación
@@ -39,9 +37,9 @@ export default function Navbar() {
   useEffect(() => {
     // Actualiza las clases CSS del elemento de la lista de navegación en función del estado de desplazamiento
     if (isScrolled) {
-      navigationRef.current?.classList.add("fixed", "top-0"); // Agrega las clases "fixed" y "top-0"
+      navigationRef.current?.classList.add("fixed", "top-0"); 
     } else {
-      navigationRef.current?.classList.remove("fixed", "top-0"); // Elimina las clases "fixed" y "top-0"
+      navigationRef.current?.classList.remove("fixed", "top-0"); 
     }
   }, [isScrolled]);
 
@@ -58,17 +56,18 @@ export default function Navbar() {
     setShowDropdown((prevState) => !prevState);
   };
   return (
-    <nav className={`w-full p-4 bg-customTeal dark:bg-customTeal border-b border-gray-300 dark:border-gray-600 flex items-center justify-center font-sans`} >
+    <nav  ref={navigationRef}
+     className={`w-full p-4 bg-customTeal dark:bg-customTeal border-b transition-all border-gray-300 dark:border-gray-600 flex items-center justify-center font-sans`} >
       <div className="flex items-center justify-between w-full md:w-[110px]" >
         <button
           className="hover:ring-4 md:hidden"
           onClick={() => setCollapse(true)}
-        ></button>
+          ></button>
       </div>
 
-      <ul
+          <ul
         ref={navigationRef}
-        className={`md:flex md:items-center gap-10 bg-customTeal dark:bg-customTeal w-[60%] md:w-auto ${collapse ? "" : "hidden md:block"
+        className={`md:flex md:items-center gap-10 bg-customTeal dark:bg-customTeal w-[70%] md:w-auto ${collapse ? "" : "hidden md:block"
           } px-4 py-3 border-r border-gray-300 md:border-0 shadow-lg md:shadow-none transition-all ease-in-out duration-500 font-sans`}
       >
         <div className="relative group">
