@@ -2,11 +2,8 @@ import Logosprov from '@/components/Logosprov';
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
 
-export default function autoridades() {
+export default function Noticiaslanding() {
   const images = [
-    { src: '/blankcard.png', alt: 'Blank', width: 900, height: 251 },
-    { src: '/blankcard.png', alt: 'Blank', width: 900, height: 251 },
-    { src: '/blankcard.png', alt: 'Blank', width: 900, height: 251 },
     { src: '/blankcard.png', alt: 'Blank', width: 900, height: 251 },
     { src: '/blankcard.png', alt: 'Blank', width: 900, height: 251 },
     { src: '/blankcard.png', alt: 'Blank', width: 900, height: 251 },
@@ -25,8 +22,9 @@ export default function autoridades() {
         {images.map((image, index) => (
           <div key={index} className="relative border border-gray-300 rounded p-4">
             <div className="absolute inset-0 flex flex-col justify-center items-center">
-              <h2 className="text-lg font-bold mb-2 text-center">Nombre Apellido</h2>
-              <p className="text-gray-800 font-sans encode-sans text-center">Cargo</p>
+            <h2 className="text-2xl font-bold mb-2">Fecha Noticia</h2>
+              <h2 className="text-lg font-bold mb-2 text-center">Titular Noticia</h2>
+              <p className="text-gray-800 font-sans encode-sans text-center">Bajada o Subtitulo</p>
               <button className="p-2 font-bold justify-botton text-customTeal">
                 contacto
               </button>

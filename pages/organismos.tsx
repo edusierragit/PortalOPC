@@ -9,7 +9,7 @@ export default function organismos() {
     <>
     <Logosprov/>
       <Navbar />
-      <Blank/>
+      
     </>
   );
 }

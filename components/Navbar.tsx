@@ -117,7 +117,7 @@ export default function Navbar() {
           </a>
         </li>
         <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
-          <a href="noticias" className="text-white py-3 md:py-1 px-3 md:px-2">
+          <a href="noticiaslanding" className="text-white py-3 md:py-1 px-3 md:px-2">
             Noticias y Agenda
           </a>
         </li>
