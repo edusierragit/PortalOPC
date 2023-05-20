@@ -67,7 +67,7 @@ export default function Navbar() {
 
           <ul
         ref={navigationRef}
-        className={`md:flex md:items-center gap-10 bg-customTeal dark:bg-customTeal w-[70%] md:w-auto ${collapse ? "" : "hidden md:block"
+        className={`md:flex md:items-center gap-10 bg-customTeal dark:bg-customTeal w-[70%] md:w-auto  ${collapse ? "" : "hidden md:block"
           } px-4 py-1 border-r border-gray-300 md:border-0 shadow-lg md:shadow-none transition-all ease-in-out duration-500 font-sans`}
       >
         <div className="relative group">
@@ -80,8 +80,8 @@ export default function Navbar() {
               Institucional
             </a>
             {showDropdown && (
-              <ul className="absolute top-full left-0 w-48 bg-customTeal p-4">
-                <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+           <ul className="absolute top-full left-0 w-48 bg-customTeal p-4" style={{ zIndex: 10 }}>
+                <li className="hover:bg-customTeal  hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
 
                   <a href="/autoridades" className="text-white py-3 md:py-1 px-3 md:px-2">
                     Autoridades
