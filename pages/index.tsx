@@ -4,6 +4,8 @@ import Searchbar from "@/components/Searchbar";
 import Blank from "@/components/Blank";
 import BlankCard from "@/components/Blankcard";
 import Blankcardright from "@/components/Blankcardright";
+import Lineasdeaccion from "@/components/Lineasdeaccion";
+import Feetpageopc from "@/components/Feetpageopc";
 
 
 
@@ -16,6 +18,8 @@ export default function Home() {
        <Searchbar/>
        <BlankCard/>
        <Blankcardright/>
+       <Lineasdeaccion/>
+       <Feetpageopc/>
     </>
   );
 }

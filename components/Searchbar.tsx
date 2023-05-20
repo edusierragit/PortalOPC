@@ -2,7 +2,7 @@ import React from 'react';
 
 const Searchbar = () => {
   return (
-    <div className="relative justify-start  h-158  w-full bg-gray-400 flex items-center">
+    <div className=" justify-start  h-158  w-full bg-gray-400 flex items-center">
       <span className="text-white ml-20 text-lg font-bold pl-10" style={{ fontSize: "40px" }}>¿Qué estás buscando?</span>
       <input
         type="text"

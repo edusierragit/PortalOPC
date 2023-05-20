@@ -68,7 +68,7 @@ export default function Navbar() {
           <ul
         ref={navigationRef}
         className={`md:flex md:items-center gap-10 bg-customTeal dark:bg-customTeal w-[70%] md:w-auto ${collapse ? "" : "hidden md:block"
-          } px-4 py-3 border-r border-gray-300 md:border-0 shadow-lg md:shadow-none transition-all ease-in-out duration-500 font-sans`}
+          } px-4 py-1 border-r border-gray-300 md:border-0 shadow-lg md:shadow-none transition-all ease-in-out duration-500 font-sans`}
       >
         <div className="relative group">
           <li
