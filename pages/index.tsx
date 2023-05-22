@@ -5,7 +5,7 @@ import Blank from "@/components/Blank";
 import BlankCard from "@/components/Blankcard";
 import Blankcardright from "@/components/Blankcardright";
 import Lineasdeaccion from "@/components/Lineasdeaccion";
-import Feetpageopc from "@/components/Feetpageopc";
+import Footerpageopc from "@/components/Footerpageopc";
 
 
 
@@ -19,7 +19,7 @@ export default function Home() {
        <BlankCard/>
        <Blankcardright/>
        <Lineasdeaccion/>
-       <Feetpageopc/>
+       <Footerpageopc/>
     </>
   );
 }

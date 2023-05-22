@@ -21,7 +21,23 @@ interface Noticia {
     imagen_principal?: {
       data: Array<{
         attributes: {
-          url: string;
+          alternativeText: string | null;
+  caption: string | null;
+  createdAt: string;
+  ext: string;
+  formats: any | null;
+  hash: string;
+  height: number;
+  mime: string;
+  name: string;
+  previewUrl: string | null;
+  provider: string;
+  provider_metadata: any | null;
+  size: number;
+  updatedAt: string;
+  url: string;
+  width: number;
+
         };
       }>;
     };
