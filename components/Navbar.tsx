@@ -72,7 +72,7 @@ export default function Navbar() {
       >
         <div className="relative group">
           <li
-            className="hover:bg-customTeal  hover:font-bold  dark:text-white rounded-lg transition-all ease-in-out duration-500 cursor-pointer"
+            className="hover:bg-customTeal    dark:text-white rounded-lg transition-all ease-in-out duration-500 cursor-pointer"
             onMouseEnter={handleDropdownToggle}
             onMouseLeave={handleDropdownToggle}
           >
