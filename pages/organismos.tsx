@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Logosprov from "@/components/Logosprov";
-import Blank from "@/components/Blank";
+import Destaquehomeprincipal from "@/components/Destaquehomeprincipal";
 
 
 

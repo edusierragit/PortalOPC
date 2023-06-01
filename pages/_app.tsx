@@ -9,24 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // Configuración de temas oscuros y claros
-    // const isDark = false; // Define tu estado para el tema oscuro/claro
-    // if (isDark) {
-    //   localStorage.setItem("theme", "dark");
-    // } else {
-    //   localStorage.removeItem("theme");
-    // }
-    // if (
-    //   localStorage.theme === "dark" ||
-    //   (!("theme" in localStorage) &&
-    //     window.matchMedia("(prefers-color-scheme: dark)").matches)
-    // ) {
-    //   document.documentElement.classList.add("dark");
-    // } else {
-    //   document.documentElement.classList.remove("dark");
-    // }
-
-    // Configuración de NProgress para mostrar la barra de progreso en el cambio de rutas
+   
     router.events.on("routeChangeComplete", () => NProgress.done());
     router.events.on("routeChangeError", () => NProgress.done());
     router.events.on("routeChangeStart", () => NProgress.start());

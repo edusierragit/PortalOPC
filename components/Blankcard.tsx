@@ -2,13 +2,13 @@ import Image from 'next/image';
 
 export default function Blankcard() {
   return (
-    <div className="flex items-center border  border-gray-300 rounded p-4 mb-4">
-      <div className="w-2/4 flex-shrink-0 ml-4">
-        <Image src="/blankcard.png" alt="Blank" width={1800} height={503} />
+    <div className="flex items-center border font-Roboto bg-white  border-gray-300 rounded p-4 mb-4">
+      <div className="w-1/4 flex-shrink-0 ml-1">
+        <Image src="/Hospital Central de Alta Complejidad de Pilar.png" alt="Blank" width={1800} height={503} />
       </div>
-      <div className=''>
-      <h2 className="text-2xl font-bold mb-2">Destacado</h2>
-        <p className="text-gray-800 font-sans encode-sans">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque poro quisquam est, qui dolorem.</p>
+      <div className='text-2xl text-gray-800 font-Roboto mb-4'>
+      <h2 className="text-2xl font-bold font-sans-serif mb-2">SE INAUGURÓ EL HOSPITAL CENTRAL DE ALTA COMPLEJIDAD DE PILAR</h2>
+        <p className="text-gray-800 font-sans">“Cuando construimos algo para nuestro pueblo, lo hacemos con la mejor calidad"</p>
       </div>
         <div className="w-3/4">
         

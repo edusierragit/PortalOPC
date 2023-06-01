@@ -9,10 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-brands-svg-icons": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.7.14",
     "@types/node": "18.15.11",
     "@types/nprogress": "^0.2.0",
@@ -21,6 +17,7 @@
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "cookies-next": "^2.1.1",
+    "daisyui": "^2.52.0",
     "eslint": "^8.38.0",
     "eslint-config-next": "13.3.0",
     "next": "13.3.0",

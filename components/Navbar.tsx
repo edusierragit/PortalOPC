@@ -57,7 +57,7 @@ export default function Navbar() {
   };
   return (
     <nav  ref={navigationRef}
-     className={`w-full p-4 bg-customTeal dark:bg-customTeal border-b transition-all border-gray-300 dark:border-gray-600 flex items-center justify-center font-sans`} >
+     className={`w-full p-4 bg-customTeal ml-1 mr-3 dark:bg-customTeal border-b transition-all border-gray-300 dark:border-gray-600 flex items-center justify-center  font-sans `}  style={{ zIndex: 10 }}>
       <div className="flex items-center justify-between w-full md:w-[110px]" >
         <button
           className="hover:ring-4 md:hidden"
@@ -72,7 +72,7 @@ export default function Navbar() {
       >
         <div className="relative group">
           <li
-            className="hover:bg-customTeal  hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500 cursor-pointer"
+            className="hover:bg-customTeal  hover:font-bold  dark:text-white rounded-lg transition-all ease-in-out duration-500 cursor-pointer"
             onMouseEnter={handleDropdownToggle}
             onMouseLeave={handleDropdownToggle}
           >
@@ -80,10 +80,10 @@ export default function Navbar() {
               Institucional
             </a>
             {showDropdown && (
-           <ul className="absolute top-full left-0 w-48 bg-customTeal p-4" style={{ zIndex: 10 }}>
+           <ul className="absolute top-full left-0 w-48 bg-customTealtoggle p-4" style={{ zIndex: 10 }}>
                 <li className="hover:bg-customTeal  hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
 
-                  <a href="/autoridades" className="text-white py-3 md:py-1 px-3 md:px-2">
+                  <a href="/autoridades" className="text-white py-3 md:py-1 px-3 md:px-2 ">
                     Autoridades
                   </a>
 
@@ -106,22 +106,22 @@ export default function Navbar() {
             )}
           </li>
         </div>
-        <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
-          <a href="organismos" className="text-white py-3 md:py-1 px-3 md:px-2">
+        <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out ">
+          <a href="organismos" className="text-white hover:font-bold  py-3 md:py-1 px-3 md:px-2">
             Organismos
           </a>
         </li>
-        <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+        <li className="hover:bg-customTeal hover:font-bold  dark:text-white rounded-lg transition-all ease-in-out duration-100">
           <a href="proveedores" className="text-white py-3 md:py-1 px-3 md:px-2">
             Proveedores
           </a>
         </li>
-        <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+        <li className="hover:bg-customTeal hover:font-bold  dark:text-white rounded-lg transition-all ease-in-out duration-100">
           <a href="noticiaslanding" className="text-white py-3 md:py-1 px-3 md:px-2">
             Noticias y Agenda
           </a>
         </li>
-        <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+        <li className="hover:bg-customTeal hover:font-bold  dark:text-white rounded-lg transition-all ease-in-out duration-100">
           <a href="capacitacion" className="text-white py-3 md:py-1 px-3 md:px-2">
             Capacitación
           </a>

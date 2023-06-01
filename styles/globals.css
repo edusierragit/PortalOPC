@@ -7,7 +7,7 @@ html {
 }
 nav a {
   color: white;
-  font-family:Verdana, Geneva, Tahoma, sans-serif
+  font-family:Verdana, Tahoma, sans-serif
   
 }
 .navbar {
@@ -19,7 +19,7 @@ nav a {
   transition: background-color 0.3s ease-in-out; /* Transición suave para el cambio de color de fondo */
 }
 nav a:hover {
-  color: hsl(50, 100%, 70%);
+  color: hsl(67, 100%, 98%);
 }
 .navbar-scrolled {
   transform: translateY(-100%);

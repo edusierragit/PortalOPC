@@ -1,12 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Logosprov from "@/components/Logosprov";
 import Searchbar from "@/components/Searchbar";
-import Blank from "@/components/Blank";
 import BlankCard from "@/components/Blankcard";
 import Blankcardright from "@/components/Blankcardright";
 import Lineasdeaccion from "@/components/Lineasdeaccion";
 import Footerpageopc from "@/components/Footerpageopc";
-
+import Destaquehomeprincipal from "@/components/Destaquehomeprincipal";
 
 
 export default function Home() {
@@ -14,7 +13,7 @@ export default function Home() {
     <>
     <Logosprov/>
       <Navbar />
-       <Blank/>
+      <Destaquehomeprincipal/>
        <Searchbar/>
        <BlankCard/>
        <Blankcardright/>
