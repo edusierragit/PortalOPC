@@ -1,6 +1,9 @@
 import Logosprov from '@/components/Logosprov';
 import Navbar from '@/components/Navbar';
-import Image from 'next/image';
+
+import Noticias from '@/components/Noticias';
+
+import Footerpageopc from '@/components/Footerpageopc';
 
 export default function Noticiaslanding() {
   const images = [
@@ -18,31 +21,11 @@ export default function Noticiaslanding() {
     <>
       <Logosprov />
       <Navbar />
-      <div className="grid  grid-cols-3 gap-4 ">
-        {images.map((image, index) => (
-          <div key={index} className="relative border border-gray-300 rounded p-4">
-            <div className="absolute inset-0 flex flex-col justify-center items-center">
-            {/* <h2 className="text-2xl font-bold mb-2">Fecha Noticia</h2>
-              <h2 className="text-lg font-bold mb-2 text-center">Titular Noticia</h2>
-              <p className="text-gray-800 font-sans encode-sans text-center">Bajada o Subtitulo</p> */}
-              {/* <button className="p-2 font-bold justify-botton text-customTeal">
-                contacto
-              </button> */}
-            </div>
-            <div className="mb-2">
-                
-              <button >
-            <a href="/noticiasyagendalanding" className="text-white py-3 md:py-1 px-3 md:px-2">
-                
-              <Image src={image.src} alt={image.alt} width={image.width} height={image.height}  />
-                  </a>
-              </button>
-
-              
-            </div>
-          </div>
-        ))}
-      </div>
+      
+      <Noticias />
+     
+       <Footerpageopc/>
+      
     </>
   );
 }

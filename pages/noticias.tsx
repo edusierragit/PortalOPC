@@ -14,6 +14,7 @@ type DestacadoProps = {
 const Destacado: React.FC<DestacadoProps> = ({ noticias }) => {
   return (
     <Noticias/>
+    
   );
 };
 

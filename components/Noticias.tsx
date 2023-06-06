@@ -2,22 +2,23 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '@/components/Navbar';
 import Logosprov from '@/components/Logosprov';
-
+import Noticia from '@/components/Noticia';
 
 
 const strapi = 'http://localhost:1337'
 
-interface Noticia {
+export interface NoticiaInt {
   id: string;
   attributes: {
+    id: string;
     acceso_publico_registrados_funcionarios: null | string;
     bajada: string;
     copete: string;
     createdAt: string;
     date_stop_publish: string;
     date_to_publish: string;
-    desarrollo_nota: string;
-    descripcion_corta: string;
+    desarrollo: string;
+    short_description: string;
     link_contenido: string;
     publishedAt: string;
     titulo_destaque: string;
@@ -49,16 +50,17 @@ interface Noticia {
 }
 
 const Noticias: React.FC = () => {
-  const [notas, setNotas] = useState<Noticia[]>([]);
+  const [notas, setNotas] = useState<NoticiaInt[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get<{ data: Noticia[]; meta: any }>('http://localhost:1337/api/notas?populate=*');
+        const res = await axios.get<{ data: NoticiaInt[]; meta: any }>('http://localhost:1337/api/notas?populate=*');
         setNotas(res.data.data);
-        console.log(notas[0].attributes.imagen_principal?.data, 'nota1url'); // for debugging purposes
+      //  console.log(notas[0].attributes.imagen_principal?.data, 'nota1url'); // for debugging purposes
 
          console.log(res.data.data, 'RES DEL GET')
+         res.data.data.map( nota =>  console.log(nota));
       } catch (error) {
         console.error(error);
       }
@@ -69,33 +71,23 @@ const Noticias: React.FC = () => {
 
 
   return (
-    <>
-      <Logosprov />
-      <Navbar />
-      
-      <div>
+    <>      
+      <div className="grid  grid-cols-3 gap-6 mr-9 ml-9 mb-24">
         {notas.length > 0 ? (
           notas.map(nota => (
-            <div key={nota.id}>
-              {/* <h2>{nota.attributes.titulo_destaque}</h2>
-              <p>{nota.attributes.descripcion_corta}</p>
-              <p>{nota.attributes.desarrollo_nota}</p> */}
-              {/* {nota.attributes.acceso_publico_registrados_funcionarios && (
-                <p>Acceso Público Registrados Funcionarios: {nota.attributes.acceso_publico_registrados_funcionarios}</p>
-              )} */}
-              {/* {nota.attributes.bajada && <p>Bajada: {nota.attributes.bajada}</p>}
-              {nota.attributes.copete && <p>Copete: {nota.attributes.copete}</p>}
-              {nota.attributes.createdAt && <p>Created At: {nota.attributes.createdAt}</p>}
-              {nota.attributes.date_stop_publish && <p>Date Stop Publish: {nota.attributes.date_stop_publish}</p>}
-              {nota.attributes.date_to_publish && <p>Date to Publish: {nota.attributes.date_to_publish}</p>}
-              {nota.attributes.link_contenido && <p>Link Contenido: {nota.attributes.link_contenido}</p>}
-              {nota.attributes.publishedAt && <p>Published At: {nota.attributes.publishedAt}</p>}
-              {nota.attributes.updatedAt && <p>Updated At: {nota.attributes.updatedAt}</p>} */}
-              {nota.attributes.imagen_principal && nota.attributes.imagen_principal.data.length > 0 && (
-                <img src= {strapi + nota.attributes.imagen_principal.data[0].attributes.url} width={800} height={503} alt="Imagen Principal" />
-              )}
-              {/* Render other properties of the nota object */}
-            </div>
+           
+
+            <Noticia 
+              key={nota.id}
+              id= {nota.id}
+              imagen={nota.attributes.imagen_principal?.data[0].attributes.url?nota.attributes.imagen_principal?.data[0].attributes.formats.medium.url:"/Llegamos a Chascomús para la RondaDeNegociosPBA.png" }
+              epigrafe={nota.attributes.copete}
+              titular={nota.attributes.titulo_destaque}
+              bajada={nota.attributes.bajada}
+              parrafo={nota.attributes.short_description}
+               />
+
+            
           ))
         ) : (
           <p>No se pudo obtener la lista de notas.</p>
