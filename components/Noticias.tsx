@@ -20,7 +20,7 @@ export interface NoticiaInt {
     desarrollo: string;
     short_description: string;
     link_contenido: string;
-    publishedAt: string;
+    publishedAt: Date;
     titulo_destaque: string;
     updatedAt: string;
     imagen_principal?: {

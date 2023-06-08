@@ -24,8 +24,9 @@ const Noticia: React.FC<NoticiaProps> = ({  id, imagen, epigrafe, titular, bajad
       <div className=" relative  w-541 h-452 md:w-541 md:h-96 sm:w-541 md:h-96" >
       <Image      
         loader={imageLoader}
-         layout="fill" 
-        className="rounded-t-lg object-cover"
+        fill={true}
+        className="rounded-t-lg" 
+        style={{objectFit: "cover"}}
         src={imagen} 
         alt="Imagen de la noticia" 
         
