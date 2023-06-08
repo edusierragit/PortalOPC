@@ -13,7 +13,6 @@ export default function NoticiaDetail() {
   const router = useRouter();
   const { id } = router.query;
 
-  const [nota, setNota] = useState<NoticiaInt>();
   interface NoticiaInt {
     id: string;
     attributes: {
@@ -26,7 +25,7 @@ export default function NoticiaDetail() {
       desarrollo: string;
       short_description: string;
       link_contenido: string;
-      publishedAt: string |'';
+      publishedAt: string | "";
       titulo_destaque: string;
       updatedAt: string;
       imagen_principal?: {
@@ -54,6 +53,7 @@ export default function NoticiaDetail() {
       };
     };
   }
+  const [nota, setNota] = useState<NoticiaInt>();
 
   const [notasRelevantes, setNotasRelevantes] = useState<NoticiaInt[]>([]);
 
@@ -78,9 +78,12 @@ export default function NoticiaDetail() {
       try {
 
         const res = await axios.get<{ data: NoticiaInt; meta: any }>(`http://localhost:1337/api/notas/${id}?populate=*`);
+        // esto lo trabajo aca, cuando llega la data, porque sino en el template, daba un error de undefinde, no se bien porque, pero capaz que es por la asincronia. seguir aprendiendo debes
+        res.data.data.attributes.publishedAt = format(parseISO(res.data.data.attributes.publishedAt),'d MMMM yyyy', { locale: es });
         setNota(res.data.data);
       //  console.log(notas[0].attributes.imagen_principal?.data, 'nota1url'); // for debugging purposes
-      console.log(format(parseISO(res.data.data.attributes.publishedAt),'d MMMM yyyy', { locale: es }));
+      
+      console.log(res.data.data.attributes.publishedAt );
          //console.log(res.data.data, 'RES DEL GET');
       } catch (error) {
         console.error(error);
@@ -101,7 +104,7 @@ export default function NoticiaDetail() {
        <div className="grid grid-cols-8 gap-3">
         <div className="col-span-1"></div>
         <div className="col-span-5 px-6">
-          <div className="font-normal text-ls leading-2 tracking-tight text-green-600 mt-9 mb-1 mt-9">{format(parseISO(nota?.attributes.publishedAt),'d MMMM yyyy', { locale: es }) }</div>
+          <div className="font-normal text-ls leading-2 tracking-tight text-green-600 mt-9 mb-1 mt-9">{nota?.attributes.publishedAt }</div>
           <div className="font-normal text-lg leading-9 tracking-tight text-black font-bold	mt-3"><h1>{nota?.attributes.titulo_destaque}</h1></div>
           <div className="font-normal text-sm leading-1 tracking-tight text-grey mb-3">{nota?.attributes.copete}</div>
           <div className=" relative w-541 h-452 md:w-541 md:h-96">
