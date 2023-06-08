@@ -72,7 +72,7 @@ const Noticias: React.FC = () => {
 
   return (
     <>      
-      <div className="grid  grid-cols-3 gap-6 mr-9 ml-9 mb-24">
+      <div className="grid grid-cols-1  md:grid-cols-3 gap-6 mr-9 ml-9 mb-24">
         {notas.length > 0 ? (
           notas.map(nota => (
            

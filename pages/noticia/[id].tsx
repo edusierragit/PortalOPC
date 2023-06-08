@@ -49,7 +49,7 @@ export default function NoticiaDetail() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get<{ data: NoticiaInt; meta: any }>('http://localhost:1337/api/notas/1?populate=*');
+        const res = await axios.get<{ data: NoticiaInt; meta: any }>(`http://localhost:1337/api/notas/1?populate=*`);
         setNota(res.data.data);
       //  console.log(notas[0].attributes.imagen_principal?.data, 'nota1url'); // for debugging purposes
 
@@ -62,7 +62,7 @@ export default function NoticiaDetail() {
     fetchData();
   }, []);
 
-  const imageLoader = ({ src, quality }) => {
+  const imageLoader = ({ src , quality }) => {
     return `http://localhost:1337${src}?&q=${quality || 75}`;
   };
     
@@ -81,7 +81,7 @@ export default function NoticiaDetail() {
             loader={imageLoader}
             layout="fill"
             className="rounded-t-lg" 
-            src=""
+            src={nota?.attributes.imagen_principal?.data[0].attributes.url?nota?.attributes.imagen_principal?.data[0].attributes.formats.medium.url:"/Llegamos a Chascomús para la RondaDeNegociosPBA.png" }
             alt="Imagen de la noticia" 
             
             />

@@ -20,12 +20,12 @@ const Noticia: React.FC<NoticiaProps> = ({  id, imagen, epigrafe, titular, bajad
   return (
     <Link href={`/noticia/${encodeURIComponent(id)}`}>
 
-    <div  className="rounded-lg bg-gray-100 relative top-12  w-541 h-859">
-      <div className=" relative w-541 h-452 md:w-541 md:h-96">
+    <div  className="rounded-lg  relative top-12  w-541 h-859">
+      <div className=" relative  w-541 h-452 md:w-541 md:h-96 sm:w-541 md:h-96" >
       <Image      
         loader={imageLoader}
-        layout="fill"
-        className="rounded-t-lg"
+         layout="fill" 
+        className="rounded-t-lg object-cover"
         src={imagen} 
         alt="Imagen de la noticia" 
         
