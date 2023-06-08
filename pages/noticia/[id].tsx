@@ -3,8 +3,12 @@ import axios from 'axios';
 import Logosprov from '@/components/Logosprov';
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export default function NoticiaDetail() {
+  const router = useRouter();
+  const { id } = router.query;
+
   const [nota, setNota] = useState<NoticiaInt>();
   interface NoticiaInt {
     id: string;
@@ -49,7 +53,8 @@ export default function NoticiaDetail() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get<{ data: NoticiaInt; meta: any }>(`http://localhost:1337/api/notas/1?populate=*`);
+
+        const res = await axios.get<{ data: NoticiaInt; meta: any }>(`http://localhost:1337/api/notas/${id}?populate=*`);
         setNota(res.data.data);
       //  console.log(notas[0].attributes.imagen_principal?.data, 'nota1url'); // for debugging purposes
 
