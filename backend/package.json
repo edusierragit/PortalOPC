@@ -1,0 +1,31 @@
+{
+  "name": "agenda",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@offset-dev/strapi-calendar": "^0.0.10",
+    "@strapi/plugin-i18n": "4.10.6",
+    "@strapi/plugin-users-permissions": "4.10.6",
+    "@strapi/strapi": "4.10.6",
+    "date-fns": "^2.30.0",
+    "pg": "8.8.0"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "78c39a9d-dd1d-41bb-be12-732f2c8f2841"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

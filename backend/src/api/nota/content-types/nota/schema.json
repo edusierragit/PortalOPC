@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notas",
+  "info": {
+    "singularName": "nota",
+    "pluralName": "notas",
+    "displayName": "Notas",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo_destaque": {
+      "type": "string"
+    },
+    "copete": {
+      "type": "string"
+    },
+    "bajada": {
+      "type": "string"
+    },
+    "date_to_publish": {
+      "type": "datetime"
+    },
+    "date_stop_publish": {
+      "type": "datetime"
+    },
+    "link_contenido": {
+      "type": "string"
+    },
+    "imagen_principal": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imagenes_carrito": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imagen_secundaria": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "acceso_publico_registrados_funcionarios": {
+      "type": "string"
+    },
+    "desarrollo": {
+      "type": "richtext"
+    },
+    "short_description": {
+      "type": "richtext"
+    }
+  }
+}

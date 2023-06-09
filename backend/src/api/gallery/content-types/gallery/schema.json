@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "galleries",
+  "info": {
+    "singularName": "gallery",
+    "pluralName": "galleries",
+    "displayName": "gallery",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "publishFrom": {
+      "type": "date"
+    },
+    "publishTo": {
+      "type": "date"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eventos",
+  "info": {
+    "singularName": "evento",
+    "pluralName": "eventos",
+    "displayName": "eventos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 3
+    },
+    "description": {
+      "type": "richtext",
+      "minLength": 32
+    },
+    "startDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "endDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "eventDate": {
+      "type": "datetime"
+    },
+    "daysOfWeek": {
+      "type": "json"
+    },
+    "excludedDays": {
+      "type": "json"
+    },
+    "onlyTheseDays": {
+      "type": "json"
+    },
+    "hours": {
+      "type": "json"
+    },
+    "allDay": {
+      "type": "boolean"
+    },
+    "duration": {
+      "type": "biginteger"
+    },
+    "colour": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Video llamada",
+        "Presencial",
+        "Mixta"
+      ],
+      "required": true,
+      "default": "Presencial"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "baja",
+        "confirmada",
+        "pendiente"
+      ]
+    },
+    "monday": {
+      "type": "boolean",
+      "default": true
+    },
+    "thusday": {
+      "type": "boolean",
+      "default": true
+    },
+    "wednesday": {
+      "type": "boolean"
+    },
+    "tuesday": {
+      "type": "boolean"
+    },
+    "friday": {
+      "type": "boolean"
+    },
+    "sutarday": {
+      "type": "boolean"
+    },
+    "sunday": {
+      "type": "boolean"
+    }
+  }
+}
