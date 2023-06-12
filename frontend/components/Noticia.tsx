@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface NoticiaProps {
-  id:string;
+  id: string;
   imagen: string;
   epigrafe: string;
   titular: string;
@@ -11,17 +11,17 @@ interface NoticiaProps {
   parrafo: string;
 }
 
-const imageLoader = ({ src, quality }) => {
+const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
   return `http://localhost:1337${src}?&q=${quality || 75}`;
 };
- 
+
 
 const Noticia: React.FC<NoticiaProps> = ({  id, imagen, epigrafe, titular, bajada, parrafo }) => {
   return (
     <Link href={`/noticia/${encodeURIComponent(id)}`}>
 
     <div  className="rounded-lg  relative top-12  w-541 h-859">
-      <div className=" relative  w-541 h-452 md:w-541 md:h-96 sm:w-541 md:h-96" >
+      <div className=" relative  w-541 h-452 md:w-541 md:h-96 sm:w-541 " >
       <Image      
         loader={imageLoader}
         fill={true}
