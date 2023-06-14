@@ -26,7 +26,7 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Arial', 'sans-serif']
+        sans: ['ui-sans-serif','sans-serif']
       },
       
       fontSize: {

@@ -9,7 +9,7 @@ export default function ErrorPage() {
         </span>
         <div className="border border-gray-900 h-10 dark:border-white transition-colors ease-in-out delay-100"></div>
         <div className="dark:text-white transition-colors ease-in-out delay-100 flex flex-col">
-          <span>No se pudo encontrar.</span>
+          <span>Algo no esta funcionando, despedir al programador </span>
           <Link href="/" className="text-blue-700 font-bold">
             Volver...
           </Link>
