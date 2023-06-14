@@ -55,7 +55,7 @@ const Noticias: React.FC = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get<{ data: NoticiaInt[]; meta: any }>('http://localhost:1337/api/notas?populate=*');
+        const res = await axios.get<{ data: NoticiaInt[]; meta: any }>('http://localhost:1337/api/Notas?populate=*');
         setNotas(res.data.data);
       //  console.log(notas[0].attributes.imagen_principal?.data, 'nota1url'); // for debugging purposes
 

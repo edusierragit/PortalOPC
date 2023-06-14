@@ -4,7 +4,6 @@ export default function Navbar() {
   const [collapse, setCollapse] = useState<boolean>(false); // Estado que controla el colapso del menú de navegación
   const navigationRef = useRef<HTMLUListElement>(null); // Referencia al elemento de la lista de navegación
   const [isScrolled, setIsScrolled] = useState(false); // Estado que indica si la página ha sido desplazada hacia abajo
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
@@ -43,14 +42,7 @@ export default function Navbar() {
     }
   }, [isScrolled]);
 
-  const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
 
-  };
-
-  const closeModal = () => {
-    setSelectedOption(null);
-  };
 
   const handleDropdownToggle: React.MouseEventHandler<HTMLLIElement> = () => {
     setShowDropdown((prevState) => !prevState);
