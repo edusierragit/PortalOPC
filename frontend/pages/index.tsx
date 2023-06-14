@@ -3,7 +3,7 @@ import Logosprov from "@/components/Logosprov";
 import Searchbar from "@/components/Searchbar";
 import BlankCard from "@/components/Blankcard";
 import Blankcardright from "@/components/Blankcardright";
-import Lineasdeaccion from "@/components/Lineasdeaccion";
+
 import Footerpageopc from "@/components/Footerpageopc";
 import Destaquehomeprincipal from "@/components/Destaquehomeprincipal";
 
@@ -17,7 +17,6 @@ export default function Home() {
        <Searchbar/>
        <BlankCard/>
        <Blankcardright/>
-       <Lineasdeaccion/>
        <Footerpageopc/>
     </>
   );

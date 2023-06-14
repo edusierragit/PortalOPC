@@ -76,26 +76,26 @@ export default function Navbar() {
             onMouseEnter={handleDropdownToggle}
             onMouseLeave={handleDropdownToggle}
           >
-            <a href="/" className="text-white  py-3 md:py-1 px-3 md:px-2">
+            <a href="/" className="text-white hover:font-bold   py-3 md:py-1 px-3 md:px-2">
               Institucional
             </a>
             {showDropdown && (
            <ul className="absolute top-full left-0 w-48 bg-customTealtoggle p-4" style={{ zIndex: 10 }}>
-                <li className="hover:bg-customTeal  hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+                <li className="hover:font-bold hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
 
                   <a href="/autoridades" className="text-white py-3 md:py-1 px-3 md:px-2 ">
                     Autoridades
                   </a>
 
                 </li>
-                <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+                <li className="hover:font-bold hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
 
                   <a href="/organigrama" className="text-white py-3 md:py-1 px-3 md:px-2">
                     Organigrama
                   </a>
 
                 </li>
-                <li className="hover:bg-customTeal hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+                <li className=" hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
 
                   <a href="/lineas-accion" className="text-white py-3 md:py-1 px-3 md:px-2">
                     Líneas de Acción

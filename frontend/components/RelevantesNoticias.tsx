@@ -5,19 +5,18 @@ import { parseISO, format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
 interface NoticiaProps {
-  id:string;
+  id: string;
   imagen: string;
   epigrafe: string;
   titular: string;
   bajada: string;
   parrafo: string;
-  publishedAt: string |'';
+  publishedAt: string | '';
 }
 
-const imageLoader = ({ src, quality }) => {
+const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
   return `http://localhost:1337${src}?&q=${quality || 75}`;
 };
- 
 
 const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, epigrafe, titular, bajada, parrafo }) => {
   return (

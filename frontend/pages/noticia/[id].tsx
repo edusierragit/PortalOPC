@@ -93,10 +93,10 @@ export default function NoticiaDetail() {
     fetchData();
   }, []);
 
-  const imageLoader = ({ src , quality }) => {
-    return `http://localhost:1337${src}?&q=${quality || 75}`;
-  };
-    
+const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
+  return `http://localhost:1337${src}?&q=${quality || 75}`;
+};
+
   return (
     <>
       <Logosprov />
@@ -104,7 +104,7 @@ export default function NoticiaDetail() {
        <div className="grid grid-cols-8 gap-3">
         <div className="col-span-1"></div>
         <div className="col-span-5 px-6">
-          <div className="font-normal text-ls leading-2 tracking-tight text-green-600 mt-9 mb-1 mt-9">{nota?.attributes.publishedAt }</div>
+          <div className="font-normal text-ls leading-2 tracking-tight text-green-600 mt-9 mb-1">{nota?.attributes.publishedAt }</div>
           <div className="font-normal text-lg leading-9 tracking-tight text-black font-bold	mt-3"><h1>{nota?.attributes.titulo_destaque}</h1></div>
           <div className="font-normal text-sm leading-1 tracking-tight text-grey mb-3">{nota?.attributes.copete}</div>
           <div className=" relative w-541 h-452 md:w-541 md:h-96">
