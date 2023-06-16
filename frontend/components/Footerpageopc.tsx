@@ -1,16 +1,38 @@
-import Image from 'next/image';
+
 
 export default function Footerpageopc() {
   return (
+    <div className="flex justify-center ml-10">
+    <ul className="menu flex font-bold mr-9 items-center lg:menu-horizontal">
+      <li className="flex-grow  px-9 py-1  rounded-md mr-4 bg-gray-400">
+        <a></a>
+        <a></a>
+        <a></a>
+        <a className="text-white">PBAC</a>
+        <a></a>
+        <a></a>
+        <a></a>
+        
+      </li>
+      <li className="flex-grow px-9 py-1 rounded-md mr-4 bg-gray-400">
+      <a></a>
+      <a></a>
+        <a className="text-white">Tablero de control</a>
+        <a></a>
+        <a></a>
 
+      </li>
+      <li className="flex-grow px-9 py-1 rounded-md bg-gray-400">
+      <a></a>
+        <a className="text-white">Registro de proveedores</a>
+        <a></a>
 
-<div className="flex items-center bg-white border-white justify-center">
-<div className="w-3/5  ml-5">
-  <div className="flex justify-center">
-    <Image src="/footerpageopc.png" alt="Blank" width={1800} height={503} className="border-none" />
+      </li>
+    </ul>
   </div>
-</div>
-</div>
+
+    
+
   );
 }
 

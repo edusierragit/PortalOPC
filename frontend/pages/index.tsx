@@ -5,6 +5,7 @@ import BlankCard from "@/components/Blankcard";
 import Blankcardright from "@/components/Blankcardright";
 import Footerpageopc from "@/components/Footerpageopc";
 import Destaquehomeprincipal from "@/components/Destaquehomeprincipal";
+import Lineasdeaccion from "@/components/Lineasdeaccion";
 
 
 export default function Home() {
@@ -13,10 +14,11 @@ export default function Home() {
     <Logosprov/>
       <Navbar />
       <Destaquehomeprincipal/>
-       <Searchbar/>
+       {/* <Searchbar/> */}
        <Footerpageopc/>
        <BlankCard/>
        <Blankcardright/>
+       <Lineasdeaccion/>
     </>
   );
 }

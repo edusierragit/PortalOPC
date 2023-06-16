@@ -1,7 +1,7 @@
 export default function Destaquehomeprincipal() {
   return (
     <div className="flex justify-center">
-      <div className="carousel mb-10 mt-10 ml-200 w-3/4 mx-auto">
+      <div className="carousel mb-3 mt-10 ml-200 w-3/5 mx-auto">
         <div id="slide1" className="carousel-item relative w-full">
           <img src="/destaquehomeprincipal.png" className="w-full" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
