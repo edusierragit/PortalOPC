@@ -68,26 +68,26 @@ export default function Navbar() {
             onMouseEnter={handleDropdownToggle}
             onMouseLeave={handleDropdownToggle}
           >
-            <a href="/" className="font-bold hover:text-gray-500 mr-8  py-3  px-3 md:px-1">
+            <a href="/" className=" hover:text-white hover:font-bold mr-8  py-3  px-3 md:px-1">
               INSTITUCIONAL
             </a>
             {showDropdown && (
               <ul className="absolute top-full left-0 w-48 bg-customTealtoggle p-4" style={{ zIndex: 10 }}>
-                <li className="hover:font-bold hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+                <li className="hover:font-bold hover:text-white dark:text-white rounded-lg transition-all ">
 
                   <a href="/autoridades" className="text-white py-3 md:py-1 px-3 md:px-2 ">
                     Autoridades
                   </a>
 
                 </li>
-                <li className="hover:font-bold hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+                <li className="hover:font-bold hover:text-white dark:text-white rounded-lg transition-all ">
 
-                  <a href="/organigrama" className="text-white py-3 md:py-1 px-3 md:px-2">
+                  <a href="/organigrama" className="text-white  hover:text-white hover:font-bold py-3 md:py-1 px-3 md:px-2">
                     Organigrama
                   </a>
 
                 </li>
-                <li className="hover:font-bold hover:text-white dark:text-white rounded-lg transition-all ease-in-out duration-500">
+                <li className="hover:font-bold hover:text-white dark:text-white  rounded-lg transition-all  ">
 
                   <a href="/organigrama" className="text-white py-3 md:py-1 px-3 md:px-2">
                     Lineas de accion
@@ -108,7 +108,7 @@ export default function Navbar() {
             PROVEEDORES
           </a>
         </li>
-        <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out ">
+        <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out  ">
           <a href="noticiaslanding" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
             NOTICIAS Y AGENDA
           </a>

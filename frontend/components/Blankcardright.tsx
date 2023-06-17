@@ -4,7 +4,7 @@ export default function Blankcardright() {
   return (
     <div className="hero  bg-white ">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <img src="/Hospital Central de Alta Complejidad de Pilar.png" className="max-w-sm rounded-lg shadow-2xl" />
+        <img src="/Hospital Central de Alta Complejidad de Pilar.png" className="max-w-sm  shadow-2xl" />
         <div>
           <h1 className="text-3xl font-bold">
             Cuando construimos algo para nuestro pueblo, lo hacemos con la mejor calidad</h1>

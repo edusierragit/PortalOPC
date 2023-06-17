@@ -2,35 +2,32 @@
 
 export default function Footerpageopc() {
   return (
-    <div className="flex justify-center ml-10">
-    <ul className="menu flex font-bold mr-9 items-center lg:menu-horizontal">
-      <li className="flex-grow  px-9 py-1  rounded-md mr-4 bg-gray-400">
-        <a></a>
-        <a></a>
-        <a></a>
-        <a className="text-white">PBAC</a>
-        <a></a>
-        <a></a>
-        <a></a>
-        
-      </li>
-      <li className="flex-grow px-9 py-1 rounded-md mr-4 bg-gray-400">
-      <a></a>
-      <a></a>
-        <a className="text-white">Tablero de control</a>
-        <a></a>
-        <a></a>
-
-      </li>
-      <li className="flex-grow px-9 py-1 rounded-md bg-gray-400">
-      <a></a>
-        <a className="text-white">Registro de proveedores</a>
-        <a></a>
-
-      </li>
-    </ul>
-  </div>
-
+<div className="flex justify-center ml-9">
+      <ul className="menu flex font-bold items-center mr-9 lg:menu-horizontal">
+        <li className="flex-grow px-9 py-1  mr-4 bg-customTeal">
+          <a></a>
+          <a></a>
+          <a></a>
+          <a></a>
+          <a className="text-white">PBAC</a>
+          <a></a>
+          <a></a>
+          <a></a>
+        </li>
+        <li className="flex-grow px-9 py-1  mr-4 bg-customTeal">
+          <a></a>
+          <a></a>
+          <a className="text-white">Tablero de control</a>
+          <a></a>
+          <a></a>
+        </li>
+        <li className="flex-grow px-9 py-1  bg-customTeal">
+          <a></a>
+          <a className="text-white">Registro de proveedores</a>
+          <a></a>
+        </li>
+      </ul>
+    </div>
     
 
   );

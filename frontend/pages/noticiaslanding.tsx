@@ -15,8 +15,7 @@ export default function Noticiaslanding() {
       
       <Noticias />
      
-       <Footerpageopc/>
-      
+    
     </>
   );
 }

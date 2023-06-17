@@ -18,7 +18,7 @@ export default function Home() {
        <Footerpageopc/>
        <BlankCard/>
        <Blankcardright/>
-       <Lineasdeaccion/>
+       {/* <Lineasdeaccion/> */}
     </>
   );
 }
