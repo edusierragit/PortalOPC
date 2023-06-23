@@ -69,15 +69,17 @@ const Destaquehomeprincipal: React.FC = () => {
               className={`carousel-item relative w-full ${index === currentSlide ? 'active' : ''}`}
               key={gallery.id}
             >
-              {gallery.attributes.Titulo_Carrousel.data.map((image) => (
-                <Image 
-                  key={image.attributes.id}
-                  loader={imageLoader}
-                  src={image.attributes.url}
-                  alt={image.attributes.name}
-                  width={image.attributes.width}
-                  height={image.attributes.height}
-                />
+              {gallery.attributes.Titulo_Carrousel.data.map((image, imageIndex) => (
+                <div key={image.attributes.id}>
+                  {imageIndex === 0 && <h2>{gallery.attributes.name}</h2>}
+                  <Image 
+                    loader={imageLoader}
+                    src={image.attributes.url}
+                    alt={image.attributes.name}
+                    width={image.attributes.width}
+                    height={image.attributes.height}
+                  />
+                </div>
               ))}
               <div className="absolute flex carousel-item justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                 <a href={`#slide${index === 0 ? galleries.length - 1 : index}`} className="btn btn-circle" onClick={() => goToSlide(index === 0 ? galleries.length - 1 : index)}>
@@ -98,41 +100,3 @@ const Destaquehomeprincipal: React.FC = () => {
 };
 
 export default Destaquehomeprincipal;
-
-
-// export default function Destaquehomeprincipal() {
-//   return (
-//     <div className="flex justify-center">
-//       <div className="carousel mb-3 mt-10 ml-200 w-3/5 mx-auto">
-//         <div id="slide1" className="carousel-item relative w-full">
-//           <img src="/destaquehomeprincipal.png" className="w-full" />
-//           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-//             <a href="#slide4" className="btn btn-circle">❮</a> 
-//             <a href="#slide2" className="btn btn-circle">❯</a>
-//           </div>
-//         </div> 
-//         <div id="slide2" className="carousel-item relative w-full">
-//           <img src="/rdnbahiablanca.png" className="w-full" />
-//           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-//             <a href="#slide1" className="btn btn-circle">❮</a> 
-//             <a href="#slide3" className="btn btn-circle">❯</a>
-//           </div>
-//         </div> 
-//         <div id="slide3" className="carousel-item relative w-full">
-//           <img src="/RondaDeNegociosPBA.png" className="w-full" />
-//           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-//             <a href="#slide2" className="btn btn-circle">❮</a> 
-//             <a href="#slide4" className="btn btn-circle">❯</a>
-//           </div>
-//         </div> 
-//         <div id="slide4" className="carousel-item relative w-full">
-//           <img src="/Llegamos a Chascomús para la RondaDeNegociosPBA.png" className="w-full" />
-//           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-//             <a href="#slide3" className="btn btn-circle">❮</a> 
-//             <a href="#slide1" className="btn btn-circle">❯</a>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

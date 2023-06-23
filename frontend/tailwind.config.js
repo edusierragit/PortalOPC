@@ -20,7 +20,7 @@ module.exports = {
 
     extend: {
        width: {
-        'custom': '1170px',
+        'custom': '1158px',
         'customfoot' : '364px',
       },
 

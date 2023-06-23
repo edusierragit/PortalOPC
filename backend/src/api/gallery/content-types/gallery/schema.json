@@ -23,6 +23,16 @@
     },
     "publishTo": {
       "type": "date"
+    },
+    "Titulo_Carrousel": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
