@@ -74,8 +74,8 @@ const Noticias: React.FC = () => {
   return (
     <>      
   
-      <div className="grid grid-cols-1  md:grid-cols-3 gap-6 mr-9 ml-9 mb-24">
-      <div className="hero min-h-screen bg-base-200">
+      <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 gap-6 mr-9 ml-9 mb-24">
+      {/* <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row">
     <img src="/images/stock/photo-1635805737707-575885ab0820.jpg" className="max-w-sm rounded-lg shadow-2xl" />
     <div>
@@ -84,7 +84,7 @@ const Noticias: React.FC = () => {
       <button className="btn btn-primary">Get Started</button>
     </div>
   </div>
-</div>
+</div> */}
         {notas.length > 0 ? (
           notas.map(nota => (
             
