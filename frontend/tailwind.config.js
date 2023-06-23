@@ -19,7 +19,12 @@ module.exports = {
   theme: {
 
     extend: {
-      
+       width: {
+        'custom': '1170px',
+        'customfoot' : '364px',
+      },
+
+     
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -49,7 +54,13 @@ module.exports = {
       inset: {
         '1097': '1097px',
       },
+      
     },
+    variants: {},
+    plugins: [
+      require("flowbite/plugin"),
+      require("daisyui")
+    ],
   },
   
   darkMode: false,

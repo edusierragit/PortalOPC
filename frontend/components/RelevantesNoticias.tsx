@@ -28,7 +28,7 @@ const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, e
     <h3 className="text-lg font-normal text-gray-800 pb-3">
         {titular}
       </h3>
-      <div className=" relative  h-60 h-60  mb-3" >
+      <div className=" relative h-60  mb-3" >
       <Image      
         loader={imageLoader}
         fill={true}

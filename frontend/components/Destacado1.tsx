@@ -1,6 +1,5 @@
-import Image from 'next/image';
 
-export default function Blankcard() {
+export default function Destacado1() {
   return (
     <div className="hero mt-5   bg-base-100">
     <div className="hero-content flex-col lg:flex-row ">

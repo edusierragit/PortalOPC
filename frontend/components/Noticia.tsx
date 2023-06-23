@@ -14,7 +14,7 @@ interface NoticiaProps {
 const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
   return `http://localhost:1337${src}?&q=${quality || 75}`;
 };
-
+console.log(imageLoader, "ImageLoader")
 
 const Noticia: React.FC<NoticiaProps> = ({  id, imagen, epigrafe, titular, bajada, parrafo }) => {
   return (
@@ -41,7 +41,7 @@ const Noticia: React.FC<NoticiaProps> = ({  id, imagen, epigrafe, titular, bajad
       <h2 className="mt-1 pl-3 pr-3 h-50 left-6 font-semibold text-sm leading-14 tracking-tight text-black">
         {bajada}
       </h2>
-      <p className="mt-1 pl-3 pr-3 h-180 text-gray-700 left-6 font-normal text-xs leading-6 tracking-tight text-black">
+      <p className="mt-1 pl-3 pr-3 h-180 left-6 font-normal text-xs leading-6 tracking-tight text-black">
         {parrafo}
       </p>
     </div>

@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 
 import Noticias from '@/components/Noticias';
 
-import Footerpageopc from '@/components/Footerpageopc';
+
 
 export default function Noticiaslanding() {
 
