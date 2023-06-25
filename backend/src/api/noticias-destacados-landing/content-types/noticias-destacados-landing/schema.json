@@ -4,7 +4,8 @@
   "info": {
     "singularName": "noticias-destacados-landing",
     "pluralName": "noticias-destacados-landings",
-    "displayName": "Noticias Destacados landing"
+    "displayName": "Noticias Destacados landing",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,6 +19,17 @@
     },
     "Orden": {
       "type": "integer"
+    },
+    "imagen_principal": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::evento.evento"
+    },
+    "nota": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nota.nota",
+      "mappedBy": "noticias_destacados_landing"
     }
   }
 }

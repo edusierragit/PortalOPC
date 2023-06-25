@@ -71,6 +71,12 @@
     },
     "short_description": {
       "type": "richtext"
+    },
+    "noticias_destacados_landing": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::noticias-destacados-landing.noticias-destacados-landing",
+      "inversedBy": "nota"
     }
   }
 }
