@@ -20,9 +20,10 @@ const imageLoader = ({ src, quality }: { src: string; quality?: number }): strin
 
 const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, epigrafe, titular, bajada, parrafo }) => {
   return (
+    <>
     <Link href={`/noticia/${encodeURIComponent(id)}`}>
  
-    <div  className="rounded-lg px-3 relative  mt-9 mb-9 ">
+    <div  className="relative  mt-9 mb-9 ">
     <div className="font-normal text-ls leading-2 tracking-tight text-green-600 mt-9 mb-1">{format(parseISO(publishedAt),'d MMMM yyyy', { locale: es }) }</div>
 
     <h3 className="text-lg font-normal text-gray-800 pb-3">
@@ -32,7 +33,7 @@ const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, e
       <Image      
         loader={imageLoader}
         fill={true}
-        className="rounded-t-lg" 
+        
         style={{objectFit: "cover"}}
         src={imagen} 
         alt="Imagen de la noticia" 
@@ -50,8 +51,10 @@ const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, e
         {parrafo}
       </p> */}
     </div>
-
     </Link>
+    <hr className="h-1 w-80 mx-auto md:w-82 my-3 bg-gray-700 border-0 dark:bg-gray-700"/>
+   
+    </>
   );
 };
 
