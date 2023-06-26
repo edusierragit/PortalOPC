@@ -49,7 +49,7 @@ export default function Navbar() {
   };
   return (
     <nav ref={navigationRef}
-      className={`w-full p-3 bg-customTeal  mr-3 dark:bg-customTeal border-b transition-all border-gray-300 dark:border-gray-600 flex items-center justify-center  font-sans `} style={{ zIndex: 10 }}>
+      className={`w-full p-3 bg-customTeal  mr-3 dark:bg-customTeal  transition-all border-gray-300 dark:border-gray-600 flex items-center justify-center  font-sans `} style={{ zIndex: 10 }}>
       <div className="flex items-center justify-between w-full md:w-[110px]" >
         <button
           className="hover:ring-4 md:hidden"

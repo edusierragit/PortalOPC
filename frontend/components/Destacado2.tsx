@@ -14,7 +14,7 @@ export default function Destacado2() {
    
               
             
-          <button className="btn btn-primary bg-customTeal ">Necesitan un boton aca?</button>
+          <button className="btn bg-white text-black">Leer mas...</button>
         </div>
       </div>
     </div>
