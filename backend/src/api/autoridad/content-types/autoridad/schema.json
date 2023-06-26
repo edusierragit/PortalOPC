@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "autoridades",
+  "info": {
+    "singularName": "autoridad",
+    "pluralName": "autoridades",
+    "displayName": "autoridades",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "puesto": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::puesto.puesto"
+    },
+    "persona": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::persona.persona"
+    },
+    "listview": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

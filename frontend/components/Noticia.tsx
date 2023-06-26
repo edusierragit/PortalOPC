@@ -14,7 +14,6 @@ interface NoticiaProps {
 const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
   return `http://localhost:1337${src}?&q=${quality || 75}`;
 };
-console.log(imageLoader, "ImageLoader")
 
 const Noticia: React.FC<NoticiaProps> = ({ id, imagen, epigrafe, titular, bajada, parrafo }) => {
   return (

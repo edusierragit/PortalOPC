@@ -1,148 +1,169 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Logosprov from '@/components/Logosprov';
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
+import qs from 'qs';
+import Autoridad from '../components/Autoridad';
+import AutoridadList from '../components/AutoridadList';
 
 export default function autoridades() {
-  const images = [
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Directora Ejecutiva', 
-      nombre: 'María Victoria Anadón', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Jefa de Gabinete', 
-      nombre: 'Laura Lerner', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Director Provincial de Coordinación Administrativa', 
-      nombre: 'Ignacio Chillier', 
-      contacto: 'Contacto ' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Responsable de la Unidad de Capacitación Permanente', 
-      nombre: 'Pablo Guitera', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Fernando Pagliuca',
-      nombre: 'Subsecretario de Sistemas de Análisis, Monitoreo, Información Estratégica y Sistemas de Contratación', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Director Provincial de Planificación e Información Estratégica', 
-      nombre: 'Leandro de la Mota', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Director Provincial de Desarrollo Tecnológico', 
-      nombre: 'Sebastian Conti', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Director Provincial de Enlace Jurisdiccional', 
-      nombre: 'Federico Llorente', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Subsecretario de Contrataciones Provinciales', 
-      nombre: 'Gustavo Ferri', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Director Provincial de Interpretación Normativa y Pliegos', 
-      nombre: 'Javier Vazquez', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Director Provincial de Compra Centralizada y Convenios', 
-      nombre: 'Marco Daniel Perfumo', 
-      contacto: 'Contacto' 
-    },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Director Provincial de Asistencia Técnico-Legal', 
-      nombre: 'Federico Otonello', 
-      contacto: 'Contacto' 
-    },
-      { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Director Provincial de Análisis Económico Financiero', 
-      nombre: 'Julio Gonzalez', 
-      contacto: 'Contacto' 
-    },
-  
-  ];
 
+  interface Autoridades {
+    id: number;
+    attributes: {
+      listview: boolean;
+      persona: 
+      {
+        id: number;
+        persona:Persona;
+        
+      }
+      puesto: 
+      {  
+        id: number;
+        puesto:Puesto;
+      }
+    }
+  }
+  /* interface Autoridades {
+    id: number;
+    attributes: {
+      listview: boolean;
+      persona: 
+      {
+        data: {
+          id: number;
+          attributes:Persona;
+        }
+      }
+      puesto: 
+      {
+        data: {
+          id: number;
+          attributes:Puesto;
+          
+        }
+      }
+    }
+  } */
+
+  interface Persona {
+      firstname: string;
+      lastname: string;
+      biography?: string;
+      bitrh?:Date;
+      email: string;
+      profile_image: any;
+  }
+
+  interface Puesto {
+    position_name: string;
+  }
+
+  const [autoridades, setAutoridades] = useState<Autoridades[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // para poder traer elementos de imagenes anidades, hay que pedirlo con el populate, por defecto el strapi no trae los siguiente campos:relational, media, component, or dynamic zone fields. Si o si hay que popular 
+        // ref : https://docs.strapi.io/dev-docs/api/rest/populate-select#relations--media-fields
+        const query = qs.stringify(
+          qs.parse('sort[0]=id&sort[1]=listview&populate[persona][populate]=*&populate[puesto][populate]=*'),
+          {
+            encodeValuesOnly: true, // prettify URL
+          }
+        ); 
+        console.log(query);
+        const res = await axios.get<{ data: Autoridades[]; meta: any }>(`http://localhost:1337/api/autoridades?${query}`);
+        
+        // mapeamos la data que viene del servidor al modelo de datos que tenemos definido, esto nos dará libertes
+        // el día que cambiemos de backend y la información venda distinta. 
+       const mappedData = res.data.data.map(autoridadData => {
+          // tomamos los datos del servidor,
+          const personaId= autoridadData.attributes.persona.data.id;
+          const personaData = autoridadData.attributes.persona.data.attributes;
+          const puestoId= autoridadData.attributes.puesto.data.id;
+          const puestoData= autoridadData.attributes.puesto.data.attributes;
+
+          const listview = autoridadData.attributes.listview;
+          const persona =  {
+            id: personaId,
+            persona: personaData
+          };
+          const puesto = {
+            id: puestoId,
+            puesto: puestoData
+          }
+          const autoridadObj = {
+            id: autoridadData.id,
+            attributes: {
+              listview: listview,
+              persona: persona,
+              puesto: puesto
+            }
+          };
+
+          return autoridadObj;
+        });
+        
+        setAutoridades(mappedData);
+        console.log(mappedData);
+      //  console.log(notas[0].attributes.imagen_principal?.data, 'nota1url'); // for debugging purposes
+         
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  if (autoridades === undefined) {
+    return <>Still loading...</>;
+  } else {
+   // console.log(autoridades);
+  }
+
+  const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
+    return `http://localhost:1337${src}?&q=${quality || 75}`;
+  };
+  // {/* */}
   return (
     <>
       <Logosprov />
       <Navbar />
-      <div className="grid grid-cols-3 gap-4">
-        {images.map((image, index) => (
-          <div key={index} className="relative border border-gray-300 rounded p-2">
-            <div className="absolute inset-0 flex flex-col justify-center items-center">
-              <h2 className="text-lg font-bold mb-2 text-center">{image.nombre}</h2>
-              <p className="text-gray-800 font-sans encode-sans text-center">{image.cargo}</p>
-              <button className="p-2 btn btn-outline btn-info font-bold justify-botton absolute bottom-0 left-0 text-customTeal">
-                {image.contacto}
-              </button>
-            </div>
-            <div className="mb-2">
-              <Image src={image.src} alt={image.alt} width={image.width} height={image.height} />
-            </div>
-          </div>
-        ))}
+      <div className="grid grid-cols-4 gap-4">
+        {autoridades.map((autoridad, index) => (
+          <Autoridad 
+          id={autoridad.id}
+          imagen={autoridad.attributes.listview?autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url:'no-img'} 
+          firstname={autoridad.attributes.persona.persona.firstname}
+          lastname={autoridad.attributes.persona.persona.lastname}
+          position_name= {autoridad.attributes.puesto.puesto.position_name}
+          listview= {autoridad.attributes.listview}
+          />
+        
+           
+        )
+       
+      )}
+      </div>
+    <div className="grid grid-cols-3 gap-4">
+        {autoridades.map((autoridad, index) => (
+          <AutoridadList 
+          id={autoridad.id}
+          imagen={autoridad.attributes.listview?autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url:'no-img'} 
+          firstname={autoridad.attributes.persona.persona.firstname}
+          lastname={autoridad.attributes.persona.persona.lastname}
+          position_name= {autoridad.attributes.puesto.puesto.position_name}
+          listview= {autoridad.attributes.listview}
+          />
+        
+           
+        )
+       
+      )}
       </div>
     </>
   );
