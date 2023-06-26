@@ -52,7 +52,7 @@ const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, e
       </p> */}
     </div>
     </Link>
-    <hr className="h-1 w-80 mx-auto md:w-82 my-3 bg-gray-700 border-0 dark:bg-gray-700"/>
+    <hr className="h-1 w-60 mx-auto md:w-82 my-3 bg-gray-700 border-0 dark:bg-gray-700"/>
    
     </>
   );
