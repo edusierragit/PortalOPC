@@ -111,7 +111,7 @@ const imageLoader = ({ src, quality }: { src: string; quality?: number }): strin
       {/* Columna 1 */}
       <div className="md:w-4/5 w-full">
          <div className="font-normal text-ls leading-2 tracking-tight text-green-600 mt-9 mb-1">{nota?.attributes.publishedAt }</div>
-          <div className="font-normal text-lg leading-9 tracking-tight text-black font-bold	mt-3"><h1>{nota?.attributes.titulo_destaque}</h1></div>
+          <div className=" text-lg leading-9 tracking-tight text-black font-bold	mt-3"><h1>{nota?.attributes.titulo_destaque}</h1></div>
           <div className="font-normal text-sm leading-1 tracking-tight text-grey mb-3">{nota?.attributes.copete}</div>
           <div >
           
