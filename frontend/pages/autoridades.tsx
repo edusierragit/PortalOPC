@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function autoridades() {
   const images = [
     { 
-      src: '/blankcard.png', 
+      src: '/Victoria.jpg', 
       alt: 'Blank', 
       width: 900, 
       height: 251, 
@@ -14,32 +14,34 @@ export default function autoridades() {
       contacto: 'Contacto' 
     },
     { 
-      src: '/blankcard.png', 
+      
+      src: '/Fernando Pagliuca.jpg', 
       alt: 'Blank', 
       width: 900, 
       height: 251, 
-      cargo: 'Jefa de Gabinete', 
-      nombre: 'Laura Lerner', 
+      cargo: 'Subsecretario de Sistemas de Análisis, Monitoreo, Información Estratégica y Sistemas de Contratación ', 
+      nombre: 'Fernando Pagliuca', 
       contacto: 'Contacto' 
     },
     { 
-      src: '/blankcard.png', 
+      src: '/IMG-20230621-WA0079 (2).jpg', 
+      alt: 'Blank', 
+      width: 900, 
+      height: 251, 
+      cargo: ' Cargo', 
+      nombre: 'Nombre', 
+      contacto: 'Contacto' 
+    },
+    { 
+      src: '/Laura Lerner.jpg', 
       alt: 'Blank', 
       width: 900, 
       height: 251, 
       cargo: 'Director Provincial de Coordinación Administrativa', 
-      nombre: 'Ignacio Chillier', 
+      nombre: 'Laura Lerner', 
       contacto: 'Contacto ' 
     },
-    { 
-      src: '/blankcard.png', 
-      alt: 'Blank', 
-      width: 900, 
-      height: 251, 
-      cargo: 'Responsable de la Unidad de Capacitación Permanente', 
-      nombre: 'Pablo Guitera', 
-      contacto: 'Contacto' 
-    },
+
     { 
       src: '/blankcard.png', 
       alt: 'Blank', 
@@ -128,13 +130,13 @@ export default function autoridades() {
     <>
       <Logosprov />
       <Navbar />
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3  gap-4">
         {images.map((image, index) => (
-          <div key={index} className="relative border border-gray-300 rounded p-2">
+          <div key={index} className="relative border  border-gray-300 rounded p-2">
             <div className="absolute inset-0 flex flex-col justify-center items-center">
-              <h2 className="text-lg font-bold mb-2 text-center">{image.nombre}</h2>
-              <p className="text-gray-800 font-sans encode-sans text-center">{image.cargo}</p>
-              <button className="p-2 btn btn-outline btn-info font-bold justify-botton absolute bottom-0 left-0 text-customTeal">
+              <h2 className=" text-3xl font-bold mb-5 ml-7  absolute top-2 text-black left-2">{image.nombre}</h2>
+              <p className="text-1/3  mr-4 mt-8 font-bold  absolute top-2 text-black left-9">{image.cargo}</p>
+              <button className="text-3xl font-bold mb-5 ml-7  absolute bottom-2 text-customTeal left-2">
                 {image.contacto}
               </button>
             </div>
