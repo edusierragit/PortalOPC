@@ -50,6 +50,7 @@ const Destaquehomeprincipal: React.FC = () => {
 
     fetchData();
   }, []);
+  
 
   const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
     return `http://localhost:1337${src}?&q=${quality || 75}`;
@@ -96,7 +97,8 @@ const Destaquehomeprincipal: React.FC = () => {
                   <h2>{gallery.attributes.name}</h2>
                 </div>
               </div>
-            ))
+            ))  
+
           ) : (
             <p>No se pudo obtener la lista de notas.</p>
           )}

@@ -24,12 +24,6 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::evento.evento"
-    },
-    "nota": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::nota.nota",
-      "mappedBy": "noticias_destacados_landing"
     }
   }
 }

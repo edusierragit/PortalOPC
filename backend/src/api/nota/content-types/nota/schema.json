@@ -41,28 +41,6 @@
         "audios"
       ]
     },
-    "imagenes_carrito": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "imagen_secundaria": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "acceso_publico_registrados_funcionarios": {
       "type": "string"
     },
@@ -71,12 +49,6 @@
     },
     "short_description": {
       "type": "richtext"
-    },
-    "noticias_destacados_landing": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::noticias-destacados-landing.noticias-destacados-landing",
-      "inversedBy": "nota"
     }
   }
 }
