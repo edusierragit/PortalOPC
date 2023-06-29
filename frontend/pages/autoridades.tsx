@@ -165,7 +165,7 @@ export default function autoridades() {
       </div>
       <div className="flex mt-7 justify-center">
         <div className="flex">
-          <div className="border-l border-gray-300 h-auto mr-4"></div>
+          <div className="h-auto mr-4"></div>
           <div className="flex flex-col justify-start pl-4">
             {autoridades.map((autoridad, index) => (
               <AutoridadList 

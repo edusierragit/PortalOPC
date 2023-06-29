@@ -25,11 +25,12 @@ const Autoridad: React.FC<AutoridadProps> = ({ id, imagen, firstname, lastname, 
              src={imagen} 
              alt={firstname} 
              /></div> 
-                <div className=" rounded-b-lg flex flex-col items-center justify-center gap-4 p-8 w-402  bg-customi1 shadow-inner">
-                <h2 className="text-lg font-bold   text-left ">{firstname}, {lastname}</h2>
-                <h3 className="text-normal">{position_name}</h3>
-                <p className="text-gray-800 font-sans encode-sans text-center"></p>
-                {/* <button className="p-2 btn btn-outline btn-info font-bold justify-botton absolute bottom-0 left-0 text-customTeal">
+                <div className="rounded-b-lg flex items-center   p-8   bg-customi1 shadow-inner">
+                <div className="md:w-2/10 w-full text-md font-bold   text-left ">{firstname}, {lastname}</div>
+                <div className="md:w-8/10 w-full text-sm justify-right">{position_name}</div>
+                
+                {/* 
+                <p className="text-gray-800 font-sans encode-sans text-center"></p><button className="p-2 btn btn-outline btn-info font-bold justify-botton absolute bottom-0 left-0 text-customTeal">
                   {autoridades.contacto}
                 </button> */}
               </div>

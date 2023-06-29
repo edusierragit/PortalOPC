@@ -22,8 +22,8 @@ const AutoridadList: React.FC<AutoridadListProps> = ({ id, imagen, firstname, la
         ?   null
       : <div key={id} className="text-center mt-1 font-sans">
           
-            <div className="text-black mb-2">{firstname}, {lastname}</div>
-            <div className="text-customTeal font-bold">{position_name}</div>
+            <div className="text-black mb-2">{position_name}</div>
+            <div className="text-customTeal font-bold">{firstname}, {lastname}</div>
             <div className="text-gray-800 font-sans encode-sans text-center"></div>
             {/* <button className="p-2 btn btn-outline btn-info font-bold justify-botton absolute bottom-0 left-0 text-customTeal">
               {autoridades.contacto}
