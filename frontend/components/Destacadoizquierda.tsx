@@ -127,7 +127,7 @@ const Destacadoizquierda: React.FC = () => {
     fetchData();
   }, []);
   return (
-    <div className="hero mt-5  bg-base-100">
+    <div className="hero bg-base-100">
     <div className="hero-content flex-col lg:flex-row ">
     <img src="/Hospital Central de Alta Complejidad de Pilar.png" className="max-w-sm shadow-2xl" />
       <div>

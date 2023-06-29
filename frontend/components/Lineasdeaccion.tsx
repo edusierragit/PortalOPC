@@ -1,43 +1,74 @@
 import Image from 'next/image';
+import React from 'react';
+import classNames from 'classnames';
+
+const colors = ['bg-customi1', 'bg-customi2', 'bg-customi3', 'bg-customi4', 'bg-customi5', 'bg-customi6'];
+const icons = ['/icono1.png', '/icono2.png', '/icono3.png', '/icono4.png', '/icono5.png', '/icono6.png'];
 
 export default function Lineasdeaccion() {
-  return (
-<footer className="footer  font-sans  justify-center h-158 mx-auto mt-14  bg-gray-100 flex items-center">
-<div className="flex items-center  border-white  ml-10  bg-white">
-      <Image src="/provincialogo.png" alt="Imagen OPC" width={630} height={60} />
-    </div>
-    
+  const firstRowIcons = icons.slice(0, 3);
+  const secondRowIcons = icons.slice(3, 6);
 
-    
-  <div >
-    <span className="footer-title">Guia Servicios</span> 
-    <a className="link link-hover">Expedientes</a> 
-    <a className="link link-hover">Seguridad Vial</a> 
-    <a className="link link-hover">ARBA</a> 
-    <a className="link link-hover">Boletin Oficial</a>
-  </div> 
-  <div>
-    <span className="footer-title">Uso Interno</span> 
-    <a className="link link-hover">About us</a> 
-    <a className="link link-hover">Webmail GBA</a> 
-    <a className="link link-hover">Webmail HORDE</a> 
-    <a className="link link-hover">Sistemas</a>
-  </div> 
-  <div>
-    <span className="footer-title">Legal</span> 
-    <a className="link link-hover">GDEBA</a>
-    <a className="link link-hover">Portal del empleado/a </a>
-    <a className="link link-hover"></a>
-    <a className="link link-hover"></a>
-    <div className="grid grid-flow-col gap-4">
-      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a>
-      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg></a>
-      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
+  const handleClick = (index:any) => {
+    // Lógica a ejecutar cuando se hace clic en un icono
+    console.log(`Icono ${index + 1} clickeado`);
+  };
+
+  return (
+    <div className="flex justify-center mt-4 flex-wrap space-y-4">
+      <div className="flex  flex-col">
+        <div className="flex justify-center space-x-4">
+          {firstRowIcons.map((icon, index) => (
+            <button
+              key={index}
+              className={classNames('w-52 h-44 flex items-center justify-center rounded-lg', colors[index])}
+              style={{ marginBottom: '1rem' }} // Espaciado vertical en la primera fila
+              onClick={() => handleClick(index)}
+            >
+              <Image src={icon} alt={`Icon ${index + 1}`} width={70} height={16} />
+            </button>
+          ))}
+        </div>
+        <div className="flex justify-center space-x-4">
+          {secondRowIcons.map((icon, index) => (
+            <button
+              key={index}
+              className={classNames('w-52 h-44 flex items-center justify-center rounded-lg', colors[index + 3])}
+              onClick={() => handleClick(index + 3)}
+            >
+              <Image src={icon} alt={`Icon ${index + 4}`} width={70} height={16} />
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
-    </div>
-  
-</footer>
   );
 }
 
+
+
+
+// return (
+//   <div className="flex justify-center ml-9">
+//     <ul className="menu flex font-bold items-center mr-9 lg:menu-horizontal">
+      
+//       <li className="flex-grow px-9 w-customfoot py-1 mr-4 bg-customTeal">
+//         <a href="https://pbac.cgp.gba.gov.ar" target="_blank" rel="noopener noreferrer" className="text-white m-auto">
+//           PBAC
+//         </a>
+//       </li>
+//       <li className="flex-grow px-9 w-customfoot py-1 mr-4 bg-customTeal">
+//         <a href="https://opc.gba.gob.ar/tcontrol" target="_blank" rel="noopener noreferrer" className="text-white m-auto">
+//           Tablero de control
+//         </a>
+//       </li>
+//       <li className="flex-grow px-9 w-customfoot py-1 bg-customTeal">
+//         <a href="https://opc.gba.gob.ar/soporte/" target="_blank" rel="noopener noreferrer" className="text-white m-auto">
+//           Centro de ayuda
+//         </a>
+//       </li>
+//     </ul>
+//   </div>
+// );
+// }
 

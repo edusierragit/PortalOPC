@@ -12,9 +12,9 @@ export default function Home() {
       <Logosprov />
       <Navbar />
 
-      <div className="mx-auto px-4">
+      <div className="mx-auto  px-4">
         <Destaquehomeprincipal />
-        <Footerpageopc />
+     <Lineasdeaccion />
 
         <div className="container  mx-auto mt-10">
           <div className="flex justify-center">
@@ -24,16 +24,17 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="container mx-auto mt-10">
-          <div className="flex justify-center">
+        <div className="container  mx-auto mt-10">
+          <div className="flex  justify-center">
             <div className="w-custom">
               <Destacadoderecha/>
             </div>
           </div>
           <div className="mx-auto  ">
           </div>
-            
-      <Lineasdeaccion />
+        
+          <Footerpageopc /> 
+          
         </div>
       </div>
 
