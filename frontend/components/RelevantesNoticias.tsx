@@ -21,10 +21,11 @@ const imageLoader = ({ src, quality }: { src: string; quality?: number }): strin
 const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, epigrafe, titular, bajada, parrafo }) => {
   return (
     <>
+     
     <Link href={`/noticia/${encodeURIComponent(id)}`}>
  
     <div  className="relative  mt-9 mb-9 ">
-    <div className="font-normal text-ls leading-2 tracking-tight text-green-600 mt-9 mb-1">{format(parseISO(publishedAt),'d MMMM yyyy', { locale: es }) }</div>
+    <div className="font-normal text-ls leading-2 tracking-tight text-customTeal  mt-9 mb-1">{format(parseISO(publishedAt),'d MMMM yyyy', { locale: es }) }</div>
 
     <h3 className="text-lg font-normal text-gray-800 pb-3">
         {titular}
@@ -44,7 +45,7 @@ const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, e
         {epigrafe}
       </p> */}
       
-      <span className="text-gray-700 mt-9">
+      <span className="text-gray-600 mt-9">
         {bajada}
       </span>
       {/* <p className="mt-1 pl-3 pr-3 h-180 text-gray-700 left-6 font-normal text-xs leading-6 tracking-tight text-black">
@@ -52,7 +53,7 @@ const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, e
       </p> */}
     </div>
     </Link>
-    <hr className="h-1 w-60 mx-auto md:w-82 my-3 bg-gray-700 border-0 dark:bg-gray-700"/>
+    <hr className="h-0.5 w-60 mx-auto md:w-82 my-3 bg-gray-600 border-0 dark:bg-gray-600"/>
    
     </>
   );

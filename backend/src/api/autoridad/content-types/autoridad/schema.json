@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "puesto": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::puesto.puesto"
-    },
     "persona": {
       "type": "relation",
       "relation": "oneToOne",
@@ -25,6 +20,11 @@
     "listview": {
       "type": "boolean",
       "default": true
+    },
+    "cargo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cargo.cargo"
     }
   }
 }

@@ -45,7 +45,13 @@ module.exports = {
       },
       colors: {
         customTeal: '#53B1BE',
-        customTealtoggle: '#2E7C88'
+        customTealtoggle: '#2E7C88',
+        customi1: '#00AEC3',
+        customi2: '#E81F76',
+        customi3: '#74C8E2',
+        customi4: '#1F3465',
+        customi5: '#A2D7E6',
+        customi6: '#592674'
       },
       spacing: {
         '158': '158px',

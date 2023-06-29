@@ -19,10 +19,10 @@ export default function autoridades() {
         persona:Persona;
         
       }
-      puesto: 
+      cargo: 
       {  
         id: number;
-        puesto:Puesto;
+        cargo:Cargo;
       }
     }
   }
@@ -37,11 +37,11 @@ export default function autoridades() {
           attributes:Persona;
         }
       }
-      puesto: 
+      cargo: 
       {
         data: {
           id: number;
-          attributes:Puesto;
+          attributes:cargo;
           
         }
       }
@@ -57,7 +57,7 @@ export default function autoridades() {
       profile_image: any;
   }
 
-  interface Puesto {
+  interface Cargo {
     position_name: string;
   }
 
@@ -69,7 +69,7 @@ export default function autoridades() {
         // para poder traer elementos de imagenes anidades, hay que pedirlo con el populate, por defecto el strapi no trae los siguiente campos:relational, media, component, or dynamic zone fields. Si o si hay que popular 
         // ref : https://docs.strapi.io/dev-docs/api/rest/populate-select#relations--media-fields
         const query = qs.stringify(
-          qs.parse('sort[0]=id&sort[1]=listview&populate[persona][populate]=*&populate[puesto][populate]=*'),
+          qs.parse('sort[0]=id&sort[1]=listview&populate[persona][populate]=*&populate[cargo][populate]=*'),
           {
             encodeValuesOnly: true, // prettify URL
           }
@@ -83,24 +83,24 @@ export default function autoridades() {
           // tomamos los datos del servidor,
           const personaId= autoridadData.attributes.persona.data.id;
           const personaData = autoridadData.attributes.persona.data.attributes;
-          const puestoId= autoridadData.attributes.puesto.data.id;
-          const puestoData= autoridadData.attributes.puesto.data.attributes;
+          const cargoId= autoridadData.attributes.cargo.data.id;
+          const cargoData= autoridadData.attributes.cargo.data.attributes;
 
           const listview = autoridadData.attributes.listview;
           const persona =  {
             id: personaId,
             persona: personaData
           };
-          const puesto = {
-            id: puestoId,
-            puesto: puestoData
+          const cargo = {
+            id: cargoId,
+            cargo: cargoData
           }
           const autoridadObj = {
             id: autoridadData.id,
             attributes: {
               listview: listview,
               persona: persona,
-              puesto: puesto
+              cargo: cargo
             }
           };
 
@@ -133,38 +133,54 @@ export default function autoridades() {
     <>
       <Logosprov />
       <Navbar />
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-3  gap-4  ">
+        <div className="col-span-1"></div>
         {autoridades.map((autoridad, index) => (
-          <Autoridad 
-          id={autoridad.id}
-          imagen={autoridad.attributes.listview?autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url:'no-img'} 
-          firstname={autoridad.attributes.persona.persona.firstname}
-          lastname={autoridad.attributes.persona.persona.lastname}
-          position_name= {autoridad.attributes.puesto.puesto.position_name}
-          listview= {autoridad.attributes.listview}
-          />
+          (0 === index) ? (
+            <Autoridad 
+              id={autoridad.id}
+              imagen={autoridad.attributes.listview ? autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url : 'no-img'}
+              firstname={autoridad.attributes.persona.persona.firstname}
+              lastname={autoridad.attributes.persona.persona.lastname}
+              position_name={autoridad.attributes.cargo.cargo.position_name}
+              listview={autoridad.attributes.listview}
+            />
+          ) : null
+        ))}
         
-           
-        )
-       
-      )}
       </div>
-    <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-4">
         {autoridades.map((autoridad, index) => (
-          <AutoridadList 
-          id={autoridad.id}
-          imagen={autoridad.attributes.listview?autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url:'no-img'} 
-          firstname={autoridad.attributes.persona.persona.firstname}
-          lastname={autoridad.attributes.persona.persona.lastname}
-          position_name= {autoridad.attributes.puesto.puesto.position_name}
-          listview= {autoridad.attributes.listview}
-          />
-        
-           
-        )
-       
-      )}
+          (0 !== index) ? (
+            <Autoridad 
+              id={autoridad.id}
+              imagen={autoridad.attributes.listview ? autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url : 'no-img'}
+              firstname={autoridad.attributes.persona.persona.firstname}
+              lastname={autoridad.attributes.persona.persona.lastname}
+              position_name={autoridad.attributes.cargo.cargo.position_name}
+              listview={autoridad.attributes.listview}
+            />
+          ) : null
+        ))}
+      </div>
+      <div className="flex mt-7 justify-center">
+        <div className="flex">
+          <div className="border-l border-gray-300 h-auto mr-4"></div>
+          <div className="flex flex-col justify-start pl-4">
+            {autoridades.map((autoridad, index) => (
+              <AutoridadList 
+                id={autoridad.id}
+                imagen={autoridad.attributes.listview ? autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url : 'no-img'}
+                firstname={autoridad.attributes.persona.persona.firstname}
+                lastname={autoridad.attributes.persona.persona.lastname}
+                position_name={autoridad.attributes.cargo.cargo.position_name}
+                listview={autoridad.attributes.listview}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
+  
 }

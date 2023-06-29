@@ -20,17 +20,16 @@ const AutoridadList: React.FC<AutoridadListProps> = ({ id, imagen, firstname, la
     
       ( listview 
         ?   null
-      : <div key={id} className="relative border border-gray-300 rounded p-2 h-auto">
-          <div className="absolute p-3 inset-0  justify-left items-left  h-auto ">
-            <h2 className="text-lg font-bold mb-2  text-left ">{firstname}, {lastname}</h2>
-            <h3 className="text-normal  mb-2 text-left">{position_name}</h3>
-            <p className="text-gray-800 font-sans encode-sans text-center"></p>
+      : <div key={id} className="text-center mt-1 font-sans">
+          
+            <div className="text-black mb-2">{firstname}, {lastname}</div>
+            <div className="text-customTeal font-bold">{position_name}</div>
+            <div className="text-gray-800 font-sans encode-sans text-center"></div>
             {/* <button className="p-2 btn btn-outline btn-info font-bold justify-botton absolute bottom-0 left-0 text-customTeal">
               {autoridades.contacto}
             </button> */}
           </div>
         
-        </div>
       )
   );
 };
