@@ -3,7 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 const colors = ['bg-customi1', 'bg-customi2', 'bg-customi3', 'bg-customi4', 'bg-customi5', 'bg-customi6'];
-const icons = ['/icono1.png', '/icono2.png', '/icono3.png', '/icono4.png', '/icono5.png', '/icono6.png'];
+const icons = ['/icono.png', '/icono2.png', '/icono3.png', '/icono4.png', '/icono5.png', '/icono6.png'];
 
 export default function Lineasdeaccion() {
   const firstRowIcons = icons.slice(0, 3);
@@ -15,7 +15,7 @@ export default function Lineasdeaccion() {
   };
 
   return (
-    <div className="flex justify-center mt-4 flex-wrap space-y-4">
+    <div className="flex justify-center ml-24 mt-4 flex-wrap space-y-4">
       <div className="flex  flex-col">
         <div className="flex justify-center space-x-4">
           {firstRowIcons.map((icon, index) => (
