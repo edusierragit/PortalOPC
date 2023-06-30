@@ -118,7 +118,7 @@ export default function NoticiaDetail() {
               ))}
             </div>
           ) : (
-            <div className="relative w-241 h-96 md:w-541 md:h-96">
+            <div className="relative w-241 h-96 md:w-341 md:h-96">
               <Image
                 loader={imageLoader}
                 layout="fill"
