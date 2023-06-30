@@ -15,7 +15,7 @@ export default function Lineasdeaccion() {
   };
 
   return (
-    <div className="flex justify-center mt-4 flex-wrap space-y-4">
+    <div className="flex justify-center ml-24 mt-4 flex-wrap space-y-4">
       <div className="flex  flex-col">
         <div className="flex justify-center space-x-4">
           {firstRowIcons.map((icon, index) => (
