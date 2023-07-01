@@ -27,7 +27,7 @@ interface NoticiaInt {
     publishedAt: string | "";
     titulo_destaque: string;
     updatedAt: string;
-    imagen_principal?: {
+    imagen_principal: {
       data: Array<{
         attributes: {
           alternativeText: string | null;
@@ -105,7 +105,7 @@ export default function NoticiaDetail() {
           </div>
           <div className="font-normal text-sm leading-1 tracking-tight text-grey mb-3">{nota?.attributes.copete}</div>
 
-          {nota?.attributes.imagen_principal?.data?.length >= 2 ? (
+          {nota.attributes.imagen_principal?.data?.length >= 2 ? (
             <div className="carousel mb-10 mt-10 w-241 h-196 md:w-541 md:h-296">
               {nota?.attributes.imagen_principal.data.map((image, index) => (
                 <div id={`slide${index + 1}`} className="carousel-item relative w-full" key={index}>

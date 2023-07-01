@@ -26,7 +26,7 @@ export default function autoridades() {
       }
     }
   }
-  /* interface Autoridades {
+ interface AutoridadesStrapi {
     id: number;
     attributes: {
       listview: boolean;
@@ -41,12 +41,12 @@ export default function autoridades() {
       {
         data: {
           id: number;
-          attributes:cargo;
+          attributes:Cargo;
           
         }
       }
     }
-  } */
+  } 
 
   interface Persona {
       firstname: string;
@@ -75,7 +75,7 @@ export default function autoridades() {
           }
         ); 
         console.log(query);
-        const res = await axios.get<{ data: Autoridades[]; meta: any }>(`http://localhost:1337/api/autoridades?${query}`);
+        const res = await axios.get<{ data: AutoridadesStrapi[]; meta: any }>(`http://localhost:1337/api/autoridades?${query}`);
         
         // mapeamos la data que viene del servidor al modelo de datos que tenemos definido, esto nos dará libertes
         // el día que cambiemos de backend y la información venda distinta. 
