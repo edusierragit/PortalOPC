@@ -10,7 +10,7 @@ const imageLoader = ({ src, quality }: { src: string; quality?: number }): strin
 
 const Noticia: React.FC<NoticiaProps> = ({ id, imagen, epigrafe, titular, bajada, parrafo }) => {
   return (
-    <Link href={`/noticia/${encodeURIComponent(id)}`}>
+    <Link href={`/noticia/${encodeURIComponent(id)}`}  as={`/noticia/${id}`}>
 
       <div className="rounded-lg  relative top-12  w-541 h-859 md:w-241 md:h-496">
         <div className="relative  w-241 h-96  sm:w-150 sm:h-246 " >

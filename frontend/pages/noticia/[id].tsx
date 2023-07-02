@@ -10,14 +10,17 @@ import { parseISO, format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { remark } from 'remark';
 import html from 'remark-html';
-import { NoticiaInterface } from '@/DataInterface/DataInterface';
+import { NoticiaInterface,mockNoticia } from '@/DataInterface/DataInterface';
 import { NoticiaStrapi } from '@/DataInterface/BackendInterface';
 import { convertirNoticia } from '@/adapters/noticiasAdapter';
 
 export default function NoticiaDetail() {
-  const [nota, setNota] = useState<NoticiaInterface>();
+  const [loading, setLoading] = useState(true);
+  const [loading1, setLoading1] = useState(true);
+  const [noticia, setNota] = useState<NoticiaInterface>(mockNoticia);
   const [notasRelevantes, setNotasRelevantes] = useState<NoticiaInterface[]>([]);
   const router = useRouter();
+  const { id } = router.query;
 
 
   useEffect(() => {
@@ -34,8 +37,12 @@ export default function NoticiaDetail() {
         const nota: NoticiaInterface = convertirNoticia(res.data.data);
 
         setNota(nota);
+        setLoading1(false);
+
       } catch (error) {
         console.error(error);
+        setLoading1(false);
+
       }
     }
 
@@ -53,14 +60,22 @@ export default function NoticiaDetail() {
         })
 
         setNotasRelevantes(notasRelevantes);
+        setLoading(false);
+
       } catch (error) {
         console.error(error);
+        setLoading(false);
+
       }
     }
 
     fetchData();
   }, []);
 
+  if (loading && loading1) {
+    // Mostrar estado de carga mientras se realizan las peticiones
+    return <div>Cargando...</div>;
+  }
 
   const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
     return `http://localhost:1337${src}?&q=${quality || 75}`;
@@ -77,15 +92,15 @@ export default function NoticiaDetail() {
       <div className="flex flex-col md:flex-row px-3 md:px-9">
         {/* Columna 1 */}
         <div className="md:w-4/5 w-full">
-          <div className="font-normal text-customTeal   text-ls leading-2 tracking-tight  mt-9 mb-1">{nota?.attributes.volanta?nota?.attributes.volanta:nota?.attributes.publishedAt}</div>
+          <div className="font-normal text-customTeal   text-ls leading-2 tracking-tight  mt-9 mb-1">{noticia?.attributes.volanta?noticia?.attributes.volanta:format(noticia?.attributes?.publishedAt,'d MMMM yyyy', { locale: es })}</div>
           <div className="text-lg leading-9 tracking-tight text-black font-bold mt-3">
-            <h1>{nota?.attributes.titulo_destaque}</h1>
+            <h1>{noticia?.attributes.titulo_destaque}</h1>
           </div>
-          <div className="font-normal text-sm leading-1 tracking-tight text-grey mb-3">{nota?.attributes.copete}</div>
+          <div className="font-normal text-sm leading-1 tracking-tight text-grey mb-3">{noticia?.attributes.copete}</div>
 
-          {nota?.attributes.imagen_principal.data?.length >= 2 ? (
+          {noticia?.attributes.imagen_principal.data?.length >= 2 ? (
             <div className="carousel mb-10 mt-10 w-241 h-196 md:w-541 md:h-296">
-              {nota?.attributes.imagen_principal.data.map((image, index) => (
+              {noticia?.attributes.imagen_principal.data.map((image, index) => (
                 <div id={`slide${index + 1}`} className="carousel-item relative w-full" key={index}>
                   <img src={'http://localhost:1337' + image?.attributes?.formats?.medium?.url} className="w-full" />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -101,16 +116,16 @@ export default function NoticiaDetail() {
                 loader={imageLoader}
                 layout="fill"
                 objectFit="cover"
-                src={nota?.attributes.imagen_principal?.data[0]?.attributes?.formats?.medium?.url || "/Llegamos a Chascomús para la RondaDeNegociosPBA.png"}
+                src={noticia?.attributes.imagen_principal?.data[0]?.attributes?.formats?.medium?.url || "/Llegamos a Chascomús para la RondaDeNegociosPBA.png"}
                 alt="Imagen de la noticia"
               />
             </div>
           )}
 
           <div className="font-normal text-lg tracking-tight text-black mt-6 indent-1 md:indent-8 justify-center text-justify">
-            <div dangerouslySetInnerHTML={{ __html: `${nota?.attributes.desarrollo}` }} />
+            <div dangerouslySetInnerHTML={{ __html: `${noticia?.attributes.desarrollo}` }} />
           </div>
-          <div className=" text-right mt-9"><span>Fecha:</span> <span className="font-normal text-customTeal  leading-2 tracking-tight">{nota?.attributes.publishedAt}</span></div>
+          <div className=" text-right mt-9"><span>Fecha:</span> <span className="font-normal text-customTeal  leading-2 tracking-tight">{format(noticia?.attributes?.publishedAt,'d MMMM yyyy', { locale: es })}</span></div>
 
         </div>
 

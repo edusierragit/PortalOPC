@@ -23,7 +23,7 @@ export function convertirNoticia(noticia: NoticiaStrapi): NoticiaInterface {
       publishedAt: parseISO(noticia.attributes.publishedAt),
       titulo_destaque: noticia.attributes.titulo_destaque,
       updatedAt: noticia.attributes.updatedAt,
-      imagen_principal: noticia.attributes.imagen_principal,
+      imagen_principal: {...noticia.attributes.imagen_principal},
     },
   };
 

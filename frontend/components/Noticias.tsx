@@ -53,7 +53,8 @@ const Noticias: React.FC = () => {
             titular={nota.attributes.titulo_destaque}
             bajada={nota.attributes.bajada}
             parrafo={nota.attributes.short_description}
-            publishedAt={format(nota?.attributes.publishedAt,'d MMMM yyyy', { locale: es }) }
+            publishedAt={nota?.attributes.publishedAt }
+            //publishedAt={format(nota?.attributes.publishedAt,'d MMMM yyyy', { locale: es }) }
                />
 
             
