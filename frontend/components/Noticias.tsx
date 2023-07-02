@@ -3,65 +3,31 @@ import axios from 'axios';
 import Navbar from '@/components/Navbar';
 import Logosprov from '@/components/Logosprov';
 import Noticia from '@/components/Noticia';
-
-
+import { NoticiaInterface } from '@/DataInterface/DataInterface';
+import { NoticiaStrapi } from '@/DataInterface/BackendInterface';
+import { parseISO, format } from 'date-fns';
+import { es } from 'date-fns/locale';
+import { convertirNoticia } from '@/adapters/noticiasAdapter';
 
 const strapi = 'http://localhost:1337'
 
-export interface NoticiaInt {
-  id: string;
-  attributes: {
-    id: string;
-    acceso_publico_registrados_funcionarios: null | string;
-    bajada: string;
-    copete: string;
-    createdAt: string;
-    date_stop_publish: string;
-    date_to_publish: string;
-    desarrollo: string;
-    short_description: string;
-    link_contenido: string;
-    publishedAt: Date;
-    titulo_destaque: string;
-    updatedAt: string;
-    imagen_principal?: {
-      data: Array<{
-        attributes: {
-          alternativeText: string | null;
-          caption: string | null;
-          createdAt: string;
-          ext: string;
-          formats: any | null;
-          hash: string;
-          height: number;
-          mime: string;
-          name: string;
-          previewUrl: string | null;
-          provider: string;
-          provider_metadata: any | null;
-          size: number;
-          updatedAt: string;
-          url: string;
-          width: number;
 
-        };
-      }>;
-    };
-  };
-}
 
 const Noticias: React.FC = () => {
-  const [notas, setNotas] = useState<NoticiaInt[]>([]);
+  const [notas, setNotas] = useState<NoticiaInterface[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get<{ data: NoticiaInt[]; meta: any }>('http://localhost:1337/api/Notas?populate=*');
-        setNotas(res.data.data);
+        const res = await axios.get<{ data: NoticiaStrapi[]; meta: any }>('http://localhost:1337/api/Notas?populate=*');
+        const notas: NoticiaInterface[] = res.data.data.map( data => {
+          const noticia: NoticiaInterface = convertirNoticia(data);
+          return noticia;
+        })
+        setNotas(notas);
       //  console.log(notas[0].attributes.imagen_principal?.data, 'nota1url'); // for debugging purposes
 
-         console.log(res.data.data, 'RES DEL GET')
-         res.data.data.map( nota =>  console.log(nota));
+         
       } catch (error) {
         console.error(error);
       }
@@ -86,7 +52,8 @@ const Noticias: React.FC = () => {
             epigrafe={nota.attributes.copete}
             titular={nota.attributes.titulo_destaque}
             bajada={nota.attributes.bajada}
-              parrafo={nota.attributes.short_description}
+            parrafo={nota.attributes.short_description}
+            publishedAt={format(nota?.attributes.publishedAt,'d MMMM yyyy', { locale: es }) }
                />
 
             

@@ -6,60 +6,12 @@ import Image from 'next/image';
 import qs from 'qs';
 import Autoridad from '../components/Autoridad';
 import AutoridadList from '../components/AutoridadList';
+import { Persona, Cargo, Autoridades } from '@/DataInterface/DataInterface';
+import { AutoridadesStrapi } from '@/DataInterface/BackendInterface';
 
 export default function autoridades() {
 
-  interface Autoridades {
-    id: number;
-    attributes: {
-      listview: boolean;
-      persona: 
-      {
-        id: number;
-        persona:Persona;
-        
-      }
-      cargo: 
-      {  
-        id: number;
-        cargo:Cargo;
-      }
-    }
-  }
- interface AutoridadesStrapi {
-    id: number;
-    attributes: {
-      listview: boolean;
-      persona: 
-      {
-        data: {
-          id: number;
-          attributes:Persona;
-        }
-      }
-      cargo: 
-      {
-        data: {
-          id: number;
-          attributes:Cargo;
-          
-        }
-      }
-    }
-  } 
-
-  interface Persona {
-      firstname: string;
-      lastname: string;
-      biography?: string;
-      bitrh?:Date;
-      email: string;
-      profile_image: any;
-  }
-
-  interface Cargo {
-    position_name: string;
-  }
+  
 
   const [autoridades, setAutoridades] = useState<Autoridades[]>([]);
 

@@ -10,75 +10,30 @@ import { parseISO, format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { remark } from 'remark';
 import html from 'remark-html';
-
-interface NoticiaInt {
-  id: string;
-  attributes: {
-    acceso_publico_registrados_funcionarios: null | string;
-    bajada: string;
-    volanta: string;
-    copete: string;
-    createdAt: string;
-    date_stop_publish: string;
-    date_to_publish: string;
-    desarrollo: string;
-    short_description: string;
-    link_contenido: string;
-    publishedAt: string | "";
-    titulo_destaque: string;
-    updatedAt: string;
-    imagen_principal: {
-      data: Array<{
-        attributes: {
-          alternativeText: string | null;
-          caption: string | null;
-          createdAt: string;
-          ext: string;
-          formats: any | null;
-          hash: string;
-          height: number;
-          mime: string;
-          name: string;
-          previewUrl: string | null;
-          provider: string;
-          provider_metadata: any | null;
-          size: number;
-          updatedAt: string;
-          url: string;
-          width: number;
-        };
-      }>;
-    };
-  };
-}
+import { NoticiaInterface } from '@/DataInterface/DataInterface';
+import { NoticiaStrapi } from '@/DataInterface/BackendInterface';
+import { convertirNoticia } from '@/adapters/noticiasAdapter';
 
 export default function NoticiaDetail() {
-  const [nota, setNota] = useState<NoticiaInt>();
-  const [notasRelevantes, setNotasRelevantes] = useState<NoticiaInt[]>([]);
+  const [nota, setNota] = useState<NoticiaInterface>();
+  const [notasRelevantes, setNotasRelevantes] = useState<NoticiaInterface[]>([]);
   const router = useRouter();
-  const { id } = router.query;
+
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get<{ data: NoticiaInt[]; meta: any }>('http://localhost:1337/api/Notas?populate=*');
-        setNotasRelevantes(res.data.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+        const { id } = router.query;
 
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await axios.get<{ data: NoticiaInt; meta: any }>(`http://localhost:1337/api/notas/${id}?populate=*`);
-        res.data.data.attributes.publishedAt = format(parseISO(res.data.data.attributes.publishedAt), 'd MMMM yyyy', { locale: es });
+        const res = await axios.get<{ data: NoticiaStrapi; meta: any }>(`http://localhost:1337/api/notas/${id}?populate=*`);
+        //res.data.data.attributes.publishedAt = format(parseISO(res.data.data.attributes.publishedAt), 'd MMMM yyyy', { locale: es });
+    //    const publisedAtDate = parseISO(res.data.data.attributes.publishedAt);
         const processedContent = await remark().use(html).process(res.data.data.attributes.desarrollo);
         res.data.data.attributes.desarrollo = processedContent.toString();
-        setNota(res.data.data);
+        
+        const nota: NoticiaInterface = convertirNoticia(res.data.data);
+
+        setNota(nota);
       } catch (error) {
         console.error(error);
       }
@@ -86,10 +41,33 @@ export default function NoticiaDetail() {
 
     fetchData();
   }, []);
+
+  
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await axios.get<{ data: NoticiaStrapi[]; meta: any }>('http://localhost:1337/api/Notas?populate=*');
+        const notasRelevantes: NoticiaInterface[] = res.data.data.map( data => {
+          const noticia: NoticiaInterface = convertirNoticia(data);
+          return noticia;
+        })
+
+        setNotasRelevantes(notasRelevantes);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
 
   const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
     return `http://localhost:1337${src}?&q=${quality || 75}`;
   };
+
+
+  
 
   return (
     <>
@@ -105,7 +83,7 @@ export default function NoticiaDetail() {
           </div>
           <div className="font-normal text-sm leading-1 tracking-tight text-grey mb-3">{nota?.attributes.copete}</div>
 
-          {nota.attributes.imagen_principal?.data?.length >= 2 ? (
+          {nota?.attributes.imagen_principal.data?.length >= 2 ? (
             <div className="carousel mb-10 mt-10 w-241 h-196 md:w-541 md:h-296">
               {nota?.attributes.imagen_principal.data.map((image, index) => (
                 <div id={`slide${index + 1}`} className="carousel-item relative w-full" key={index}>

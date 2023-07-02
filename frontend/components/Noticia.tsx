@@ -1,15 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { NoticiaProps } from '@/DataInterface/DataInterface';
 
-interface NoticiaProps {
-  id: string;
-  imagen: string;
-  epigrafe: string;
-  titular: string;
-  bajada: string;
-  parrafo: string;
-}
 
 const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
   return `http://localhost:1337${src}?&q=${quality || 75}`;
