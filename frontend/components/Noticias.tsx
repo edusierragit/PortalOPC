@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from '@/components/Navbar';
-import Logosprov from '@/components/Logosprov';
+/* import Navbar from '@/components/Navbar';
+import Logosprov from '@/components/Logosprov'; */
 import Noticia from '@/components/Noticia';
 import { NoticiaInterface } from '@/DataInterface/DataInterface';
 import { NoticiaStrapi } from '@/DataInterface/BackendInterface';
-import { parseISO, format } from 'date-fns';
-import { es } from 'date-fns/locale';
+/* import { parseISO, format } from 'date-fns';
+import { es } from 'date-fns/locale'; */
 import { convertirNoticia } from '@/adapters/noticiasAdapter';
 
 //const strapi = 'http://localhost:1337'

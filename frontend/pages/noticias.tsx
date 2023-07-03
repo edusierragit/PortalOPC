@@ -11,7 +11,7 @@ type DestacadoProps = {
   noticias: Noticia[];
 };
 
-const Destacado: React.FC<DestacadoProps> = ({ noticias }) => {
+const Destacado: React.FC<DestacadoProps> = () => {
   return (
     <Noticias/>
     

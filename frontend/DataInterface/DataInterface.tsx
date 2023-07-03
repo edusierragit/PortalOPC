@@ -47,10 +47,10 @@ export interface NoticiaInterface {
 export interface NoticiaProps {
   id: string;
   imagen: string;
-  epigrafe: string;
+  epigrafe?: string;
   titular: string;
   bajada: string;
-  parrafo: string;
+  parrafo?: string;
   publishedAt: Date | 0;
 }
 

@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar';
 import RelevantesNoticias from '@/components/RelevantesNoticias';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { parseISO, format } from 'date-fns';
+import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { remark } from 'remark';
 import html from 'remark-html';
@@ -20,7 +20,6 @@ export default function NoticiaDetail() {
   const [noticia, setNota] = useState<NoticiaInterface>(mockNoticia);
   const [notasRelevantes, setNotasRelevantes] = useState<NoticiaInterface[]>([]);
   const router = useRouter();
-  const { id } = router.query;
 
 
   useEffect(() => {
@@ -102,7 +101,7 @@ export default function NoticiaDetail() {
             <div className="carousel mb-10 mt-10 w-241 h-196 md:w-541 md:h-296">
               {noticia?.attributes.imagen_principal.data.map((image, index) => (
                 <div id={`slide${index + 1}`} className="carousel-item relative w-full" key={index}>
-                  <img src={ image?.attributes?.formats?.medium?.url} className="w-full" />
+                  <img src={ image?.attributes?.formats?.medium?.url} className="w-full" alt="imagen"/>
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href={`#slide${index}`} className="btn btn-circle">❮</a>
                     <a href={`#slide${index + 2}`} className="btn btn-circle">❯</a>
@@ -140,10 +139,10 @@ export default function NoticiaDetail() {
                 key={nota.id}
                 id={nota.id}
                 imagen={nota.attributes.imagen_principal?.data[0]?.attributes?.formats?.medium?.url || "/Llegamos a Chascomús para la RondaDeNegociosPBA.png"}
-                epigrafe={nota.attributes.copete}
+               /*  epigrafe={nota.attributes.copete} */
                 titular={nota.attributes.titulo_destaque}
                 bajada={nota.attributes.bajada}
-                parrafo={nota.attributes.short_description}
+                /* parrafo={nota.attributes.short_description} */
                 publishedAt={nota?.attributes.publishedAt}
               />
             ))

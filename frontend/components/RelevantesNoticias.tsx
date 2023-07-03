@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { parseISO, format } from 'date-fns';
+import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { NoticiaProps } from '@/DataInterface/DataInterface'; 
 
@@ -10,7 +10,7 @@ const imageLoader = ({ src, quality }: { src: string; quality?: number }): strin
   return `http://localhost:1337${src}?&q=${quality || 75}`;
 };
 
-const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, epigrafe, titular, bajada, parrafo }) => {
+const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, titular, bajada }) => {
   return (
     <>
      

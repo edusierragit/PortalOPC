@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Image from 'next/image';
+//import Image from 'next/image';
 
 //const strapi = 'http://localhost:1337';
 
@@ -103,9 +103,9 @@ const Destacadoizquierda: React.FC = () => {
   }, []);
 
 
-  const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
+  /* const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
     return `${src}?&q=${quality || 75}`;
-  };
+  }; */
 
 
   useEffect(() => {
@@ -127,10 +127,10 @@ const Destacadoizquierda: React.FC = () => {
   return (
     <div className="hero bg-base-100">
     <div className="hero-content flex-col lg:flex-row ">
-    <img src="/Hospital Central de Alta Complejidad de Pilar.png" className="max-w-sm shadow-2xl" />
+    <img src="/Hospital Central de Alta Complejidad de Pilar.png" className="max-w-sm shadow-2xl" alt="imagen"/>
       <div>
         <h1 className="text-3xl font-bold">Se inauguro el Hospital Central de alta complejidad en PILAR</h1>
-        <p className="py-6 text-2xl">“Cuando construimos algo para nuestro pueblo, lo hacemos con la mejor calidad"</p>
+        <p className="py-6 text-2xl">&quot;Cuando construimos algo para nuestro pueblo, lo hacemos con la mejor calidad&quot;</p>
         <button className="btn bg-white hover:bg-white text-black">Leer mas...</button>
       </div>
     </div>

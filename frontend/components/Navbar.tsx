@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Link from 'next/link';
 
 export default function Navbar() {
   const [collapse, setCollapse] = useState<boolean>(false); // Estado que controla el colapso del menú de navegación
@@ -68,30 +69,30 @@ export default function Navbar() {
             onMouseEnter={handleDropdownToggle}
             onMouseLeave={handleDropdownToggle}
           >
-            <a href="/" className=" hover:text-white hover:font-bold mr-8  py-3  px-3 md:px-1">
+            <Link href="/" className=" hover:text-white hover:font-bold mr-8  py-3  px-3 md:px-1">
               INSTITUCIONAL
-            </a>
+            </Link>
             {showDropdown && (
               <ul className="absolute top-full left-0 w-48 bg-customTealtoggle p-4" style={{ zIndex: 10 }}>
                 <li className="hover:font-bold hover:text-white dark:text-white rounded-lg transition-all ">
 
-                  <a href="/autoridades" className="text-white py-3 md:py-1 px-3 md:px-2 ">
+                  <Link href="/autoridades" className="text-white py-3 md:py-1 px-3 md:px-2 ">
                     Autoridades
-                  </a>
+                  </Link>
 
                 </li>
                 <li className="hover:font-bold hover:text-white dark:text-white rounded-lg transition-all ">
 
-                  <a href="/organigrama" className="text-white  hover:text-white hover:font-bold py-3 md:py-1 px-3 md:px-2">
+                  <Link href="/organigrama" className="text-white  hover:text-white hover:font-bold py-3 md:py-1 px-3 md:px-2">
                     Organigrama
-                  </a>
+                  </Link>
 
                 </li>
                 <li className="hover:font-bold hover:text-white dark:text-white  rounded-lg transition-all  ">
 
-                  <a href="/Lineas de accion" className="text-white py-3 md:py-1 px-3 md:px-2">
+                  <Link href="/Lineas de accion" className="text-white py-3 md:py-1 px-3 md:px-2">
                     Lineas de accion
-                  </a>
+                  </Link>
 
                 </li>
               </ul>
@@ -99,24 +100,24 @@ export default function Navbar() {
           </li>
         </div>
         <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out ">
-          <a href="organismos" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
+          <Link href="organismos" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
             ORGANISMO
-          </a>
+          </Link>
         </li>
         <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out ">
-          <a href="proveedores" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
+          <Link href="proveedores" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
             PROVEEDORES
-          </a>
+          </Link>
         </li>
         <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out  ">
-          <a href="noticiaslanding" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
+          <Link href="noticiaslanding" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
             NOTICIAS Y AGENDA
-          </a>
+          </Link>
         </li>
         <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out ">
-          <a href="capacitacion" className="text-white hover:font-bold mr-4 py-3 md:py-1 px-3 md:px-1">
+          <Link href="capacitacion" className="text-white hover:font-bold mr-4 py-3 md:py-1 px-3 md:px-1">
             CAPACITACION
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
