@@ -3,7 +3,7 @@ import axios from 'axios';
 import Image from 'next/image';
 import { parseISO, format } from 'date-fns';
 import { es } from 'date-fns/locale';
-const strapi = 'http://localhost:1337';
+//const strapi = 'http://localhost:1337';
 
 export interface Gallery {
   id: string;
@@ -39,7 +39,7 @@ const Destaquehomeprincipal: React.FC = () => {
     async function fetchData(){
       try {
         const res = await axios.get<{ data: Gallery[]; meta: any }>(
-          `${strapi}/api/galleries?populate=*`
+          '/api/galleries?populate=*'
         );
         setGalleries(res.data.data);
         console.log(res.data.data, 'RES DEL GET');
@@ -53,7 +53,7 @@ const Destaquehomeprincipal: React.FC = () => {
   
 
   const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
-    return `http://localhost:1337${src}?&q=${quality || 75}`;
+    return `${src}?&q=${quality || 75}`;
   };
 
   const goToSlide = (index: number) => {

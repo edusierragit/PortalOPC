@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Image from 'next/image';
+//import Image from 'next/image';
 
-const strapi = 'http://localhost:1337';
+//const strapi = 'http://localhost:1337';
 
 export interface Destacadoizquierda {
   id: number;
@@ -83,15 +83,14 @@ export interface Notas {
 
 
 const Destacadoizquierda: React.FC = () => {
-
-
-
+  const [notas, setNotas] = useState<Notas[]>([])
   const [destacados, setDestacados] = useState<Destacadoizquierda[]>([]);
+  
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get<{ data: Destacadoizquierda[]; meta: any }>(
-          `${strapi}/api/noticias-destacados-landings?populate=*`
+          '/api/noticias-destacados-landings?populate=*'
         );
         setDestacados(res.data.data);
         console.log(res.data.data, 'res get de noticias-destacados-landings');
@@ -104,17 +103,16 @@ const Destacadoizquierda: React.FC = () => {
   }, []);
 
 
-  const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
-    return `http://localhost:1337${src}?&q=${quality || 75}`;
-  };
+  /* const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
+    return `${src}?&q=${quality || 75}`;
+  }; */
 
-  const [notas, setNotas] = useState<Notas[]>([])
 
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get<{ data: Notas[]; meta: any }>(
-          `${strapi}/api/notas?populate=*`
+          '/api/notas?populate=*'
         );
         setNotas(res.data.data);
         console.log(res.data.data, 'res get de notas');
@@ -129,10 +127,10 @@ const Destacadoizquierda: React.FC = () => {
   return (
     <div className="hero bg-base-100">
     <div className="hero-content flex-col lg:flex-row ">
-    <img src="/Hospital Central de Alta Complejidad de Pilar.png" className="max-w-sm shadow-2xl" />
+    <img src="/Hospital Central de Alta Complejidad de Pilar.png" className="max-w-sm shadow-2xl" alt="imagen"/>
       <div>
         <h1 className="text-3xl font-bold">Se inauguro el Hospital Central de alta complejidad en PILAR</h1>
-        <p className="py-6 text-2xl">“Cuando construimos algo para nuestro pueblo, lo hacemos con la mejor calidad"</p>
+        <p className="py-6 text-2xl">&quot;Cuando construimos algo para nuestro pueblo, lo hacemos con la mejor calidad&quot;</p>
         <button className="btn bg-white hover:bg-white text-black">Leer mas...</button>
       </div>
     </div>

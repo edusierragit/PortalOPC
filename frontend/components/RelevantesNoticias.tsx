@@ -1,31 +1,23 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { parseISO, format } from 'date-fns';
+import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { NoticiaProps } from '@/DataInterface/DataInterface'; 
 
-interface NoticiaProps {
-  id: string;
-  imagen: string;
-  epigrafe: string;
-  titular: string;
-  bajada: string;
-  parrafo: string;
-  publishedAt: string | '';
-}
 
 const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
   return `http://localhost:1337${src}?&q=${quality || 75}`;
 };
 
-const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, epigrafe, titular, bajada, parrafo }) => {
+const RelevantesNoticias: React.FC<NoticiaProps> = ({  id, publishedAt,imagen, titular, bajada }) => {
   return (
     <>
      
     <Link href={`/noticia/${encodeURIComponent(id)}`}>
  
     <div  className="relative  mt-9 mb-9 ">
-    <div className="font-normal text-ls leading-2 tracking-tight text-customTeal  mt-9 mb-1">{format(parseISO(publishedAt),'d MMMM yyyy', { locale: es }) }</div>
+    <div className="font-normal text-ls leading-2 tracking-tight text-customTeal  mt-9 mb-1">{format(publishedAt,'d MMMM yyyy', { locale: es }) }</div>
 
     <h3 className="text-lg font-normal text-gray-800 pb-3">
         {titular}

@@ -1,21 +1,21 @@
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+/* import Image from 'next/image';
+import Link from 'next/link'; */
 
 interface AutoridadListProps {
   id: number;
-  imagen: string;
+  
   firstname: string;
   lastname: string;
   position_name: string;
   listview: boolean;
 }
 
-const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
+/* const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
   return `http://localhost:1337${src}?&q=${quality || 75}`;
-};
+}; */
 
-const AutoridadList: React.FC<AutoridadListProps> = ({ id, imagen, firstname, lastname, position_name, listview }) => {
+const AutoridadList: React.FC<AutoridadListProps> = ({ id, firstname, lastname, position_name, listview }) => {
   return (
     
       ( listview 

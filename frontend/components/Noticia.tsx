@@ -1,23 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { NoticiaProps } from '@/DataInterface/DataInterface';
 
-interface NoticiaProps {
-  id: string;
-  imagen: string;
-  epigrafe: string;
-  titular: string;
-  bajada: string;
-  parrafo: string;
-}
 
 const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
-  return `http://localhost:1337${src}?&q=${quality || 75}`;
+  return `${src}?&q=${quality || 75}`;
 };
 
 const Noticia: React.FC<NoticiaProps> = ({ id, imagen, epigrafe, titular, bajada, parrafo }) => {
   return (
-    <Link href={`/noticia/${encodeURIComponent(id)}`}>
+    <Link href={`/noticia/${encodeURIComponent(id)}`}  as={`/noticia/${id}`}>
 
       <div className="rounded-lg  relative top-12  w-541 h-859 md:w-241 md:h-496">
         <div className="relative  w-241 h-96  sm:w-150 sm:h-246 " >

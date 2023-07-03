@@ -2,66 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Logosprov from '@/components/Logosprov';
 import Navbar from '@/components/Navbar';
-import Image from 'next/image';
+//import Image from 'next/image';
 import qs from 'qs';
 import Autoridad from '../components/Autoridad';
 import AutoridadList from '../components/AutoridadList';
+import { Autoridades } from '@/DataInterface/DataInterface';
+import { AutoridadesStrapi } from '@/DataInterface/BackendInterface';
 
-export default function autoridades() {
-
-  interface Autoridades {
-    id: number;
-    attributes: {
-      listview: boolean;
-      persona: 
-      {
-        id: number;
-        persona:Persona;
-        
-      }
-      cargo: 
-      {  
-        id: number;
-        cargo:Cargo;
-      }
-    }
-  }
-  /* interface Autoridades {
-    id: number;
-    attributes: {
-      listview: boolean;
-      persona: 
-      {
-        data: {
-          id: number;
-          attributes:Persona;
-        }
-      }
-      cargo: 
-      {
-        data: {
-          id: number;
-          attributes:cargo;
-          
-        }
-      }
-    }
-  } */
-
-  interface Persona {
-      firstname: string;
-      lastname: string;
-      biography?: string;
-      bitrh?:Date;
-      email: string;
-      profile_image: any;
-  }
-
-  interface Cargo {
-    position_name: string;
-  }
-
-  const [autoridades, setAutoridades] = useState<Autoridades[]>([]);
+export default function Autoridades() {
+const [autoridades, setAutoridades] = useState<Autoridades[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -75,7 +24,7 @@ export default function autoridades() {
           }
         ); 
         console.log(query);
-        const res = await axios.get<{ data: Autoridades[]; meta: any }>(`http://localhost:1337/api/autoridades?${query}`);
+        const res = await axios.get<{ data: AutoridadesStrapi[]; meta: any }>(`/api/autoridades?${query}`);
         
         // mapeamos la data que viene del servidor al modelo de datos que tenemos definido, esto nos dará libertes
         // el día que cambiemos de backend y la información venda distinta. 
@@ -125,9 +74,9 @@ export default function autoridades() {
    // console.log(autoridades);
   }
 
-  const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
+  /* const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
     return `http://localhost:1337${src}?&q=${quality || 75}`;
-  };
+  }; */
   // {/* */}
   return (
     <>
@@ -137,7 +86,8 @@ export default function autoridades() {
         <div className="col-span-1"></div>
         {autoridades.map((autoridad, index) => (
           (0 === index) ? (
-            <Autoridad 
+            <Autoridad
+            key={`autoridad-first-${index}`}
               id={autoridad.id}
               imagen={autoridad.attributes.listview ? autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url : 'no-img'}
               firstname={autoridad.attributes.persona.persona.firstname}
@@ -153,6 +103,7 @@ export default function autoridades() {
         {autoridades.map((autoridad, index) => (
           (0 !== index) ? (
             <Autoridad 
+              key={`autoridad-${index}`}
               id={autoridad.id}
               imagen={autoridad.attributes.listview ? autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url : 'no-img'}
               firstname={autoridad.attributes.persona.persona.firstname}
@@ -167,10 +118,11 @@ export default function autoridades() {
         <div className="flex">
           <div className="h-auto mr-4"></div>
           <div className="flex flex-col justify-start pl-4">
-            {autoridades.map((autoridad, index) => (
+            {autoridades.map((autoridad) => (
               <AutoridadList 
+                key={autoridad.id}
                 id={autoridad.id}
-                imagen={autoridad.attributes.listview ? autoridad.attributes.persona.persona.profile_image.data[0].attributes?.url : 'no-img'}
+                
                 firstname={autoridad.attributes.persona.persona.firstname}
                 lastname={autoridad.attributes.persona.persona.lastname}
                 position_name={autoridad.attributes.cargo.cargo.position_name}
