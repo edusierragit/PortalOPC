@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 
-const strapi = 'http://localhost:1337';
+//const strapi = 'http://localhost:1337';
 
 export interface Destacadoizquierda {
   id: number;
@@ -83,15 +83,14 @@ export interface Notas {
 
 
 const Destacadoizquierda: React.FC = () => {
-
-
-
+  const [notas, setNotas] = useState<Notas[]>([])
   const [destacados, setDestacados] = useState<Destacadoizquierda[]>([]);
+  
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get<{ data: Destacadoizquierda[]; meta: any }>(
-          `${strapi}/api/noticias-destacados-landings?populate=*`
+          '/api/noticias-destacados-landings?populate=*'
         );
         setDestacados(res.data.data);
         console.log(res.data.data, 'res get de noticias-destacados-landings');
@@ -105,16 +104,15 @@ const Destacadoizquierda: React.FC = () => {
 
 
   const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
-    return `http://localhost:1337${src}?&q=${quality || 75}`;
+    return `${src}?&q=${quality || 75}`;
   };
 
-  const [notas, setNotas] = useState<Notas[]>([])
 
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get<{ data: Notas[]; meta: any }>(
-          `${strapi}/api/notas?populate=*`
+          '/api/notas?populate=*'
         );
         setNotas(res.data.data);
         console.log(res.data.data, 'res get de notas');

@@ -12,7 +12,7 @@ interface AutoridadProps {
 }
 
 const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
-  return `http://localhost:1337${src}?&q=${quality || 75}`;
+  return `${src}?&q=${quality || 75}`;
 };
 
 const Autoridad: React.FC<AutoridadProps> = ({ id, imagen, firstname, lastname, position_name, listview }) => {

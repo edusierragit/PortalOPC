@@ -28,7 +28,7 @@ export default function NoticiaDetail() {
       try {
         const { id } = router.query;
 
-        const res = await axios.get<{ data: NoticiaStrapi; meta: any }>(`http://localhost:1337/api/notas/${id}?populate=*`);
+        const res = await axios.get<{ data: NoticiaStrapi; meta: any }>(`/api/notas/${id}?populate=*`);
         //res.data.data.attributes.publishedAt = format(parseISO(res.data.data.attributes.publishedAt), 'd MMMM yyyy', { locale: es });
     //    const publisedAtDate = parseISO(res.data.data.attributes.publishedAt);
         const processedContent = await remark().use(html).process(res.data.data.attributes.desarrollo);
@@ -53,7 +53,7 @@ export default function NoticiaDetail() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get<{ data: NoticiaStrapi[]; meta: any }>('http://localhost:1337/api/Notas?populate=*');
+        const res = await axios.get<{ data: NoticiaStrapi[]; meta: any }>('/api/Notas?populate=*');
         const notasRelevantes: NoticiaInterface[] = res.data.data.map( data => {
           const noticia: NoticiaInterface = convertirNoticia(data);
           return noticia;
@@ -78,7 +78,7 @@ export default function NoticiaDetail() {
   }
 
   const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
-    return `http://localhost:1337${src}?&q=${quality || 75}`;
+    return `${src}?&q=${quality || 75}`;
   };
 
 
@@ -102,7 +102,7 @@ export default function NoticiaDetail() {
             <div className="carousel mb-10 mt-10 w-241 h-196 md:w-541 md:h-296">
               {noticia?.attributes.imagen_principal.data.map((image, index) => (
                 <div id={`slide${index + 1}`} className="carousel-item relative w-full" key={index}>
-                  <img src={'http://localhost:1337' + image?.attributes?.formats?.medium?.url} className="w-full" />
+                  <img src={ image?.attributes?.formats?.medium?.url} className="w-full" />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href={`#slide${index}`} className="btn btn-circle">❮</a>
                     <a href={`#slide${index + 2}`} className="btn btn-circle">❯</a>

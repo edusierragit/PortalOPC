@@ -9,7 +9,7 @@ import { parseISO, format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { convertirNoticia } from '@/adapters/noticiasAdapter';
 
-const strapi = 'http://localhost:1337'
+//const strapi = 'http://localhost:1337'
 
 
 
@@ -19,7 +19,7 @@ const Noticias: React.FC = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get<{ data: NoticiaStrapi[]; meta: any }>('http://localhost:1337/api/Notas?populate=*');
+        const res = await axios.get<{ data: NoticiaStrapi[]; meta: any }>('/api/notas?populate=*');
         const notas: NoticiaInterface[] = res.data.data.map( data => {
           const noticia: NoticiaInterface = convertirNoticia(data);
           return noticia;

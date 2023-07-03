@@ -5,7 +5,7 @@ import { NoticiaProps } from '@/DataInterface/DataInterface';
 
 
 const imageLoader = ({ src, quality }: { src: string; quality?: number }): string => {
-  return `http://localhost:1337${src}?&q=${quality || 75}`;
+  return `${src}?&q=${quality || 75}`;
 };
 
 const Noticia: React.FC<NoticiaProps> = ({ id, imagen, epigrafe, titular, bajada, parrafo }) => {
