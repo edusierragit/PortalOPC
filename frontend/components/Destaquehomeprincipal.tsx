@@ -3,7 +3,7 @@ import axios from 'axios';
 import Image from 'next/image';
 import { parseISO, format } from 'date-fns';
 import { es } from 'date-fns/locale';
-//const strapi = 'http://localhost:1337';
+
 
 export interface Gallery {
   id: string;
@@ -42,7 +42,7 @@ const Destaquehomeprincipal: React.FC = () => {
           '/api/galleries?populate=*'
         );
         setGalleries(res.data.data);
-        console.log(res.data.data, 'RES DEL GET');
+        console.log(res.data.data, 'get galleries');
       } catch (error) {
         console.error(error);
       }
@@ -84,10 +84,13 @@ const Destaquehomeprincipal: React.FC = () => {
                   </div>
                 ))}
                 <div className="absolute flex carousel-item justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                  <a href={`#slide${index === 0 ? galleries.length - 1 : index}`} className="btn btn-circle" onClick={() => goToSlide(index === 0 ? galleries.length - 1 : index)}>
+                  <a href={`#slide${index === 0 ? galleries.length - 1 : index}`} 
+                  className="btn btn-circle" onClick={() => goToSlide(index === 0 ? galleries.length - 1 : index)}>
                     ❮
                   </a>
-                  <a href={`#slide${index === galleries.length - 1 ? 0 : index + 1}`} className="btn btn-circle" onClick={() => goToSlide(index === galleries.length - 1 ? 0 : index + 1)}>
+                  <a href={`#slide${index === galleries.length - 1 ? 0 : index + 1}`} 
+                  className="btn btn-circle" 
+                  onClick={() => goToSlide(index === galleries.length - 1 ? 0 : index + 1)}>
                     ❯
                   </a>
                 </div>

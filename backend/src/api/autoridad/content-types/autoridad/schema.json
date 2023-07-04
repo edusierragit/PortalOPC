@@ -25,6 +25,14 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::cargo.cargo"
+    },
+    "Orden": {
+      "type": "integer",
+      "max": 6,
+      "default": 1,
+      "min": 1,
+      "required": true,
+      "unique": true
     }
   }
 }

@@ -1,74 +1,87 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import axios from 'axios';
 
-const colors = ['bg-customi1', 'bg-customi2', 'bg-customi3', 'bg-customi4', 'bg-customi5', 'bg-customi6'];
-const icons = ['/icono.png', '/icono2.png', '/icono3.png', '/icono4.png', '/icono5.png', '/icono6.png'];
+interface LineaDeAccion {
+  id: number;
+  attributes: {
+    LinkContenido: null | string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    Nombre: string;
+    Orden: number;
+    iconos: {
+      data: {
+        attributes: {
+          url: string;
+        };
+      };
+    };
+  };
+}
 
-export default function Lineasdeaccion() {
-  const firstRowIcons = icons.slice(0, 3);
-  const secondRowIcons = icons.slice(3, 6);
+const Lineasdeaccion: React.FC = () => {
+  const [lineasdeaccion, setLineasdeaccion] = useState<LineaDeAccion[]>([]);
+  const colors = ['bg-customi1', 'bg-customi2', 'bg-customi3', 'bg-customi4', 'bg-customi5', 'bg-customi6'];
+  
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await axios.get('/api/lineasdeacciones?populate=*');
+        setLineasdeaccion(res.data.data);
+        console.log(res.data.data, 'res get api/lineasdeacciones?populate=*');
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-  const handleClick = (index:any) => {
+    fetchData();
+  }, []);
+
+  const handleClick = (index: number) => {
     // Lógica a ejecutar cuando se hace clic en un icono
     console.log(`Icono ${index + 1} clickeado`);
   };
 
+  // Ordenar las lineasDeAccion según el atributo "Orden"
+  const sortedLineasDeAccion = lineasdeaccion.sort((a, b) => a.attributes.Orden - b.attributes.Orden);
+
   return (
     <div className="flex justify-center ml-24 mt-4 flex-wrap space-y-4">
-      <div className="flex  flex-col">
+      <div className="flex flex-col">
         <div className="flex justify-center space-x-4">
-          {firstRowIcons.map((icon, index) => (
+          {sortedLineasDeAccion.slice(0, 3).map((icon, index) => (
             <button
-              key={index}
-              className={classNames('w-52 h-44 flex items-center justify-center rounded-lg', colors[index])}
+              key={icon.id}
+              className={classNames('w-56 h-52 flex items-center justify-center rounded-lg', colors[index])}
               style={{ marginBottom: '1rem' }} // Espaciado vertical en la primera fila
               onClick={() => handleClick(index)}
             >
-              <Image src={icon} alt={`Icon ${index + 1}`} width={70} height={16} />
+              <div className="relative w-32 h-40">
+                <Image src={icon.attributes.iconos.data.attributes.url} alt={`Icon ${index + 1}`} layout="fill" objectFit="contain" />
+              </div>
             </button>
           ))}
         </div>
         <div className="flex justify-center space-x-4">
-          {secondRowIcons.map((icon, index) => (
+          {sortedLineasDeAccion.slice(3, 6).map((icon, index) => (
             <button
-              key={index}
-              className={classNames('w-52 h-44 flex items-center justify-center rounded-lg', colors[index + 3])}
+              key={icon.id}
+              className={classNames('w-56 h-52 flex items-center justify-center rounded-lg', colors[index + 3])}
               onClick={() => handleClick(index + 3)}
             >
-              <Image src={icon} alt={`Icon ${index + 4}`} width={70} height={16} />
+              <div className="relative w-32 h-40">
+                <Image src={icon.attributes.iconos.data.attributes.url} alt={`Icon ${index + 4}`} layout="fill" objectFit="contain" />
+              </div>
             </button>
           ))}
         </div>
       </div>
     </div>
   );
-}
+};
 
-
-
-
-// return (
-//   <div className="flex justify-center ml-9">
-//     <ul className="menu flex font-bold items-center mr-9 lg:menu-horizontal">
-      
-//       <li className="flex-grow px-9 w-customfoot py-1 mr-4 bg-customTeal">
-//         <a href="https://pbac.cgp.gba.gov.ar" target="_blank" rel="noopener noreferrer" className="text-white m-auto">
-//           PBAC
-//         </a>
-//       </li>
-//       <li className="flex-grow px-9 w-customfoot py-1 mr-4 bg-customTeal">
-//         <a href="https://opc.gba.gob.ar/tcontrol" target="_blank" rel="noopener noreferrer" className="text-white m-auto">
-//           Tablero de control
-//         </a>
-//       </li>
-//       <li className="flex-grow px-9 w-customfoot py-1 bg-customTeal">
-//         <a href="https://opc.gba.gob.ar/soporte/" target="_blank" rel="noopener noreferrer" className="text-white m-auto">
-//           Centro de ayuda
-//         </a>
-//       </li>
-//     </ul>
-//   </div>
-// );
-// }
+export default Lineasdeaccion;
 
