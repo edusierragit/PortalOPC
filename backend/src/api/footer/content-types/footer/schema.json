@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "footer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Expedienteslink": {
+      "type": "string"
+    },
+    "SeguridadvialLink": {
+      "type": "string"
+    },
+    "ARBA_Link": {
+      "type": "string"
+    },
+    "BoletinOficialLink": {
+      "type": "string"
+    },
+    "Webmail_GBA_Link": {
+      "type": "string"
+    },
+    "WEbmail_HORDE_Link": {
+      "type": "string"
+    },
+    "SistemasLink": {
+      "type": "string"
+    },
+    "GDEBA_Link": {
+      "type": "string"
+    },
+    "Portaldelempleado_Link": {
+      "type": "string"
+    },
+    "PoliticasdePrivacidad_Link": {
+      "type": "string"
+    }
+  }
+}

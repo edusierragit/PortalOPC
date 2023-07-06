@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lineasdeaccioneslanding",
+  "info": {
+    "singularName": "lineasdeaccionlanding",
+    "pluralName": "lineasdeaccioneslanding",
+    "displayName": "lineasdeaccionlanding",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "bajada": {
+      "type": "string"
+    }
+  }
+}

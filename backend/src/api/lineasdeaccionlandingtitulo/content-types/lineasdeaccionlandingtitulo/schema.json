@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lineasdeaccionlandingtitulos",
+  "info": {
+    "singularName": "lineasdeaccionlandingtitulo",
+    "pluralName": "lineasdeaccionlandingtitulos",
+    "displayName": "lineasdeaccionlandingtitulo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "Bajada": {
+      "type": "string"
+    },
+    "Icono": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "lineasdeaccionlanding": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::lineasdeaccionlanding.lineasdeaccionlanding"
+    },
+    "Orden": {
+      "type": "integer",
+      "max": 7,
+      "default": 1,
+      "min": 1,
+      "unique": false,
+      "required": true
+    }
+  }
+}

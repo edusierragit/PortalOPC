@@ -25,15 +25,16 @@ export default function Home() {
         </div>
 
         <div className="container  mx-auto mt-10">
-          <div className="flex  justify-center">
-            <div className="w-custom">
+          <div className="flex   justify-center">
+            <div className="w-custom ">
               <Destacadoderecha/>
             </div>
           </div>
-          <div className="mx-auto  ">
+          <div className="mx-auto ">
           </div>
         
           <Footerpageopc /> 
+        
           
         </div>
       </div>

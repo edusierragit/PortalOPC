@@ -90,7 +90,7 @@ export default function Navbar() {
                 </li>
                 <li className="hover:font-bold hover:text-white dark:text-white  rounded-lg transition-all  ">
 
-                  <Link href="/Lineas de accion" className="text-white py-3 md:py-1 px-3 md:px-2">
+                  <Link href="/lineasdeaccionlanding" className="text-white py-3 md:py-1 px-3 md:px-2">
                     Lineas de accion
                   </Link>
 

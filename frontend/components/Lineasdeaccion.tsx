@@ -49,13 +49,13 @@ const Lineasdeaccion: React.FC = () => {
   const sortedLineasDeAccion = lineasdeaccion.sort((a, b) => a.attributes.Orden - b.attributes.Orden);
 
   return (
-    <div className="flex justify-center ml-24 mt-4 flex-wrap space-y-4">
+    <div className="flex justify-center ml-24  mt-4 flex-wrap space-y-4">
       <div className="flex flex-col">
         <div className="flex justify-center space-x-4">
           {sortedLineasDeAccion.slice(0, 3).map((icon, index) => (
             <button
               key={icon.id}
-              className={classNames('w-56 h-52 flex items-center justify-center rounded-lg', colors[index])}
+              className={classNames('w-44 h-50 flex items-center justify-center rounded-lg', colors[index])}
               style={{ marginBottom: '1rem' }} // Espaciado vertical en la primera fila
               onClick={() => handleClick(index)}
             >
@@ -69,10 +69,10 @@ const Lineasdeaccion: React.FC = () => {
           {sortedLineasDeAccion.slice(3, 6).map((icon, index) => (
             <button
               key={icon.id}
-              className={classNames('w-56 h-52 flex items-center justify-center rounded-lg', colors[index + 3])}
+              className={classNames('w-44 h-50 flex items-center justify-center rounded-lg', colors[index + 3])}
               onClick={() => handleClick(index + 3)}
             >
-              <div className="relative w-32 h-40">
+              <div className="relative w-24 h-40">
                 <Image src={icon.attributes.iconos.data.attributes.url} alt={`Icon ${index + 4}`} layout="fill" objectFit="contain" />
               </div>
             </button>
@@ -82,6 +82,8 @@ const Lineasdeaccion: React.FC = () => {
     </div>
   );
 };
+
+
 
 export default Lineasdeaccion;
 
