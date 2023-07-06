@@ -4,6 +4,7 @@ import Lineasdeaccionlanding from "@/components/Lineasdeaccionlanding";
 
 
 
+
 export default function lineasdeaccionlanding() {
   return (
     <>
