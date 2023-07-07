@@ -101,22 +101,22 @@ export default function Navbar() {
           </li>
         </div>
         <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out ">
-          <Link href="organismos" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
+          <Link href="/organismos" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
             ORGANISMO
           </Link>
         </li>
         <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out ">
-          <Link href="proveedores" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
+          <Link href="/proveedores" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
             PROVEEDORES
           </Link>
         </li>
         <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out  ">
-          <Link href="noticias" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
+          <Link href="/noticias" className="text-white hover:font-bold mr-4  py-3 md:py-1 px-3 md:px-2">
             NOTICIAS Y AGENDA
           </Link>
         </li>
         <li className="hover:bg-customTeal  hover:text-gray-500 dark:text-white mr-9 rounded-lg transition-all ease-in-out ">
-          <Link href="capacitacion" className="text-white hover:font-bold mr-4 py-3 md:py-1 px-3 md:px-1">
+          <Link href="/capacitacion" className="text-white hover:font-bold mr-4 py-3 md:py-1 px-3 md:px-1">
             CAPACITACION
           </Link>
         </li>
