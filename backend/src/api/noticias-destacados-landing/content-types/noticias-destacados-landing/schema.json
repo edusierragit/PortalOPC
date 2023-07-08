@@ -20,10 +20,10 @@
     "Orden": {
       "type": "integer"
     },
-    "imagen_principal": {
+    "imagen_pincipal": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::evento.evento"
+      "target": "api::media.media"
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "lineasdeaccionlandingtitulos",
+  "collectionName": "lineasdeaccionitems",
   "info": {
-    "singularName": "lineasdeaccionlandingtitulo",
-    "pluralName": "lineasdeaccionlandingtitulos",
-    "displayName": "lineasdeaccionlandingtitulo",
+    "singularName": "lineasdeaccionitem",
+    "pluralName": "lineasdeaccionitems",
+    "displayName": "Lineas de acción Item",
     "description": ""
   },
   "options": {
@@ -12,13 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Titulo": {
+    "titulo": {
       "type": "string"
     },
-    "Bajada": {
+    "bajada": {
       "type": "string"
     },
-    "Icono": {
+    "icon": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -29,18 +29,21 @@
         "audios"
       ]
     },
-    "lineasdeaccionlanding": {
+    "lineasdeaccion": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::lineasdeaccionlanding.lineasdeaccionlanding"
+      "target": "api::lineasdeaccion.lineasdeaccion"
     },
-    "Orden": {
+    "order": {
       "type": "integer",
       "max": 7,
       "default": 1,
       "min": 1,
       "unique": false,
       "required": true
+    },
+    "url": {
+      "type": "string"
     }
   }
 }

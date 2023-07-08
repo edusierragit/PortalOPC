@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "borrar-lineasdeaccion",
+  "info": {
+    "singularName": "borrar-lineasdeaccion",
+    "pluralName": "borrar-lineasdeacciones",
+    "displayName": "IconosHome-BORRAR",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "iconos": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "LinkContenido": {
+      "type": "string"
+    },
+    "Nombre": {
+      "type": "string"
+    },
+    "Orden": {
+      "type": "integer",
+      "default": 1,
+      "max": 6,
+      "unique": true,
+      "required": true,
+      "min": 1
+    }
+  }
+}
